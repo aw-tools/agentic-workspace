@@ -1,11 +1,11 @@
-[class.standing]
-statuses = ["live", "retired"]
+[class.binding]
+statuses = ["active", "superseded"]
 
 [class.ephemeral]
 statuses = ["open", "graduated", "expired"]
 
 [kind.log]
-class = "standing"
+class = "binding"
 
 [kind.brief]
 class = "ephemeral"

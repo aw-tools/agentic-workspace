@@ -25,6 +25,11 @@ A fixture whose clause concerns commits holds no files at the top level beyond
 A runner creates an empty repository, copies each step in order, commits it, and
 hands the result to the implementation. `registry.toml` sits inside each step.
 
+Clause 4.1.1 binds the working tree the runner hands over, the last step, not
+every commit on the way: an earlier commit may mark an ephemeral artefact
+`graduated` or `expired` so that the commit deleting it can be judged under
+clauses 4.1.2 and 4.1.3.
+
 The verdict is the outcome alone. Which clause an implementation cites, and in
 what words, is its own business.
 

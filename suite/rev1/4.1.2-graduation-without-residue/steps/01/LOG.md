@@ -1,6 +1,6 @@
 ---
 kind: log
-status: live
+status: active
 ---
 
 # Log
