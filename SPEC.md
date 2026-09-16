@@ -1,6 +1,6 @@
 # The Agentic Workspace artefact model
 
-**Contract revision 1.** Published 2026-09-15.
+**Contract revision 1.** Published 2026-09-16.
 
 This document specifies how to classify the documents an agentic workspace
 accumulates and what eventually happens to each of them. It names no tool. Any
@@ -119,8 +119,9 @@ state.
 
 **3.5** A standing artefact SHOULD NOT be appended to.
 
-**3.6** A binding artefact MUST be append-only. Once recorded, an entry MUST NOT
-be renumbered.
+**3.6** A binding artefact MUST be append-only: body content once recorded MUST
+NOT be changed, and new body content MUST follow it. The frontmatter is not body
+content.
 
 **3.7** A binding artefact reaching `superseded` MUST name what supersedes it.
 
@@ -144,12 +145,14 @@ disposition, and that is settled once for the whole class.
 
 ### Ephemeral artefacts
 
-**4.1.1** An ephemeral artefact MUST leave the working tree when it reaches a
-terminal state.
+**4.1.1** An ephemeral artefact in a terminal state MUST NOT remain in the
+working tree. The clause binds the working tree as a reader sees it now: a
+commit may record the terminal state and a later commit delete the artefact.
 
 **4.1.2** An ephemeral artefact reaching `graduated` MUST have its residue
 recorded in a durable artefact, such as a binding entry, a ledger, or a standing
-document, in the same commit that deletes it.
+document, in the same commit that deletes it. An implementation MUST reject the
+deleting commit when no standing, binding, or episodic artefact changes in it.
 
 **4.1.3** An ephemeral artefact reaching `expired` MAY be deleted with no
 residue recorded. Marking it `expired` asserts it held nothing worth keeping.
@@ -177,7 +180,8 @@ it, in the same commit.
 episodic artefact in the `open` state.
 
 **4.2.4** Compaction MUST preserve the closed artefact's durable residue and MAY
-discard the rest.
+discard the rest. A compacted artefact MUST retain content beyond its
+frontmatter.
 
 ## 5. Frontmatter
 
