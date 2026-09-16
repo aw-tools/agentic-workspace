@@ -17,4 +17,6 @@ Not accepting external contributions yet. See
 
 Copyright 2026 Front Seed Labs Ltd.
 
-The specification is licensed under [CC BY 4.0](LICENSE-CC-BY-4.0).
+The specification is licensed under [CC BY 4.0](LICENSE-CC-BY-4.0). The
+conformance suite under `suite/` is licensed under either [MIT](LICENSE-MIT) or
+[Apache-2.0](LICENSE-APACHE), at your option.
