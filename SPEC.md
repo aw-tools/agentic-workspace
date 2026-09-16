@@ -119,8 +119,9 @@ state.
 
 **3.5** A standing artefact SHOULD NOT be appended to.
 
-**3.6** A binding artefact MUST be append-only: content once recorded MUST NOT
-be changed, and new content MUST follow it.
+**3.6** A binding artefact MUST be append-only: body content once recorded MUST
+NOT be changed, and new body content MUST follow it. The frontmatter is not body
+content.
 
 **3.7** A binding artefact reaching `superseded` MUST name what supersedes it.
 
@@ -179,7 +180,8 @@ it, in the same commit.
 episodic artefact in the `open` state.
 
 **4.2.4** Compaction MUST preserve the closed artefact's durable residue and MAY
-discard the rest. A compacted artefact MUST NOT be empty.
+discard the rest. A compacted artefact MUST retain content beyond its
+frontmatter.
 
 ## 5. Frontmatter
 
