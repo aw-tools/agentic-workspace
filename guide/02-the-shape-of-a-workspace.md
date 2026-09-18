@@ -16,7 +16,7 @@ The layer holds:
   its path inside the workspace, its clone URL and, if needed, its branch.
 - `AGENTS.md`, the instructions an agent reads first. `CLAUDE.md` is a link to
   it.
-- `bin/`, a few scripts. `bin/bootstrap` calls `aw bootstrap`.
+- `bin/`, the scripts. `bin/bootstrap` calls `aw bootstrap`.
   `bin/lint-artefacts` checks the record against the contract before each
   commit.
 - `context/`, the record itself.

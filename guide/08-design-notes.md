@@ -21,7 +21,7 @@ because the workspace holds only the record of the work.
 
 A file that is only appended to grows into a log, and a log answers what
 happened rather than what is true now. A session resuming from a log must read
-all of it and reconstruct the present. A session rewrites the state file
+the whole log and reconstruct the present. A session rewrites the state file
 instead: each update replaces an item's fields with the present state. A reader
 then takes the file as current.
 
@@ -47,10 +47,10 @@ recorded is a loss. Recovery is one git command away.
 ## Why the class is derived
 
 A file could carry its class as a third field beside kind and status. It does
-not, because a hand-typed copy of a computed field eventually disagrees with the
-field it came from. Nothing then says which of the two is right. Deriving the
-class from the kind through the registry makes a lifetime change one registry
-row instead of an edit to every file.
+not, because a hand-typed copy of a computed field drifts from the field it came
+from. Nothing then says which of the two is right. Deriving the class from the
+kind through the registry makes a lifetime change one registry row instead of an
+edit to every file.
 
 The same reasoning keeps the kind names out of the contract. The names are a
 workspace's own vocabulary. Fixing a set in the contract would reserve ordinary

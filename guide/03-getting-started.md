@@ -74,7 +74,7 @@ git status --porcelain
 git ls-files
 ```
 
-`git ls-files` lists every file the workspace will track. If a member's file
+`git ls-files` lists every file the workspace tracks. If a member's file
 appears, the `.gitignore` is wrong and you stop here. When the list is only the
 layer, make the first commit.
 
@@ -87,7 +87,7 @@ copy that survives the machine.
 Choose the host for the record, not for the code. The code repositories carry
 what a reader of the code may see. The record carries the whole thread of your
 work: client names, machine facts, people, and decisions that were rejected.
-Pick a host whose confidentiality you would accept for all of that.
+Pick a host whose confidentiality you would accept for that whole record.
 
 A hosted private repository suits personal or public work. A workspace that
 names clients, infrastructure or people belongs on infrastructure you control.
