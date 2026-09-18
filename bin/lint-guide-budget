@@ -1,0 +1,45 @@
+#!/bin/sh
+# Checks every chapter against guide/budget.txt. Fails when a chapter is over
+# its budget or has no budget line, or a budget line names no file.
+set -eu
+root=$(cd "$(dirname "$0")/.." && pwd)
+budget="$root/guide/budget.txt"
+status=0
+seen=""
+
+while read -r file limit; do
+  case "$file" in ''|'#'*) continue ;; esac
+  case "$limit" in ''|*[!0-9]*)
+    echo "budget: $file has no numeric budget" >&2
+    status=1
+    continue
+    ;;
+  esac
+  seen="$seen $file"
+  path="$root/guide/$file"
+  if [ ! -f "$path" ]; then
+    echo "budget: $file is listed but does not exist" >&2
+    status=1
+    continue
+  fi
+  words=$(wc -w < "$path" | tr -d ' ')
+  if [ "$words" -gt "$limit" ]; then
+    echo "budget: $file is $words words, budget $limit" >&2
+    status=1
+  else
+    echo "budget: $file $words/$limit"
+  fi
+done < "$budget"
+
+for path in "$root"/guide/*.md; do
+  file=$(basename "$path")
+  case " $seen " in
+  *" $file "*) ;;
+  *)
+    echo "budget: $file has no line in guide/budget.txt" >&2
+    status=1
+    ;;
+  esac
+done
+
+exit $status

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs both guide checks: Vale over the chapters, then the word budget.
+# Exits non-zero on any Vale error or any chapter over budget.
+set -u
+root=$(cd "$(dirname "$0")/.." && pwd)
+cd "$root" || exit 1
+status=0
+vale --config .vale.ini guide/*.md || status=1
+bin/lint-guide-budget || status=1
+exit $status
