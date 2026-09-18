@@ -36,3 +36,7 @@ Copyright 2026 Front Seed Labs Ltd.
 The specification and the guide are licensed under
 [CC BY 4.0](LICENSE-CC-BY-4.0). The conformance suite under `suite/` is licensed
 under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+The lint rules under `.vale/` are MIT; five of them are adapted from
+[gds-vale-styles](https://github.com/alphagov/gds-vale-styles), Copyright 2019
+Government Digital Service, under
+[its MIT licence](.vale/styles/Guide/LICENCE-GDS.md).

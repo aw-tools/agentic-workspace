@@ -1,0 +1,11 @@
+# Word budget per chapter, counted by `wc -w` over the whole file. The only
+# place a ceiling lives. Raise a line in a commit that says why.
+01-what-this-is.md 600
+02-the-shape-of-a-workspace.md 600
+03-getting-started.md 700
+04-the-record.md 900
+05-the-contract.md 700
+06-working-with-agents.md 700
+07-going-further.md 700
+08-design-notes.md 800
+glossary.md 800

@@ -36,9 +36,11 @@ If you say you have worked elsewhere, it refreshes in full.
 
 The agent commits the layer whenever the record changes, without asking. Commits
 are signed, linear and made directly to the default branch. If the workspace has
-a remote, the agent pushes every commit at once. A fresh workspace has no
-remote, so the agent commits only until you add one. Chapter 3 says how to
-choose a remote, and the choice is yours, never the agent's.
+a remote, the agent pushes every commit at once.
+
+A fresh workspace has no remote, so the agent commits only until you add one.
+Chapter 3 says how to choose a remote, and the choice is yours, never the
+agent's.
 
 This authority covers the layer alone. It never covers a member or a secret. The
 list of things that must not enter the record is in `context/README.md`, and it
