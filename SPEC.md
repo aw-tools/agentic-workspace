@@ -5,8 +5,8 @@
 This document specifies how to classify the documents an agentic workspace
 accumulates and what eventually happens to each of them. It names no tool. Any
 implementation passing the conformance suite for a given revision conforms to
-that revision. The `aw lint` command is the reference implementation, not the
-definition.
+that revision. The workspace template's `bin/lint-artefacts` script is the
+reference implementation, not the definition.
 
 ## 1. Conventions
 
