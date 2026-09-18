@@ -24,6 +24,13 @@ the fixtures, each a small workspace with the verdict a conforming
 implementation must give. An implementation conforms to a revision when it gives
 the expected verdict on every fixture of that revision.
 
+## The tools
+
+[aw-cli](https://github.com/aw-tools/aw-cli) is the command line tool that
+provisions a workspace and reports on it. It creates each workspace from the
+[workspace template](https://github.com/aw-tools/workspace.template), which
+carries the record's layout and lint. The guide's third chapter installs both.
+
 ## Contributing
 
 Not accepting external contributions yet. See

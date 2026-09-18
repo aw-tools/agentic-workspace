@@ -20,7 +20,7 @@ build it. Install it with rustup from https://rustup.rs, which gives you
 There is no packaged release yet, so install from source with Cargo:
 
 ```sh
-cargo install --git <repository url> agentic-workspace
+cargo install --git https://github.com/aw-tools/aw-cli aw-cli
 ```
 
 Check that the binary is on your path:
@@ -39,9 +39,10 @@ aw init myproject.workspace
 cd myproject.workspace
 ```
 
-`aw init` clones the template, checks that it has a deny-all `.gitignore` and a
-manifest, and runs `git init`. It makes no commit. The first commit is yours, so
-that you see what the workspace tracks before anything is recorded.
+`aw init` clones the template at its latest stable release, checks that it has a
+deny-all `.gitignore` and a manifest, and runs `git init`. The manifest records
+which release the workspace came from. It makes no commit. The first commit is
+yours, so that you see what the workspace tracks before anything is recorded.
 
 ## Declare the members
 
