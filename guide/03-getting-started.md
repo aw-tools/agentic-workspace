@@ -11,13 +11,42 @@
   https://dprint.dev/install/.
 
 `aw doctor` checks git and garden and says what is missing. It does not check
-dprint. Until `aw` has a packaged release you also need a Rust toolchain to
-build it. Install it with rustup from https://rustup.rs, which gives you
-`cargo`, the command used in the next section.
+dprint.
 
 ## Install the tool
 
-There is no packaged release yet, so install from source with Cargo:
+Every release at https://github.com/aw-tools/aw-cli/releases/latest carries four
+archives. Pick the one that matches your machine:
+
+| Your machine                        | Archive                               |
+| ----------------------------------- | ------------------------------------- |
+| Mac with Apple silicon              | `aw-aarch64-apple-darwin.tar.gz`      |
+| Mac with an Intel processor         | `aw-x86_64-apple-darwin.tar.gz`       |
+| Linux, most distributions           | `aw-x86_64-unknown-linux-gnu.tar.gz`  |
+| Linux built on musl, such as Alpine | `aw-x86_64-unknown-linux-musl.tar.gz` |
+
+Download it together with the checksums file, check it and put the binary on
+your path. Set `target` to the middle part of your archive name:
+
+```sh
+target=x86_64-unknown-linux-gnu
+base=https://github.com/aw-tools/aw-cli/releases/latest/download
+curl -LO "$base/aw-$target.tar.gz" -O "$base/SHA256SUMS"
+sha256sum -c SHA256SUMS --ignore-missing
+tar xzf "aw-$target.tar.gz"
+mkdir -p ~/.local/bin
+install -m 755 aw ~/.local/bin/aw
+```
+
+On macOS the checksum command is `shasum -a 256 -c SHA256SUMS --ignore-missing`.
+The rest is the same.
+
+A browser download marks the archive as quarantined on macOS, and the binary
+then refuses to start. Clear the mark with `xattr -d com.apple.quarantine aw`.
+The `curl` command above leaves no mark.
+
+Building from source needs a Rust toolchain at 1.85 or later. Install it with
+rustup from https://rustup.rs, which gives you `cargo`:
 
 ```sh
 cargo install --git https://github.com/aw-tools/aw-cli aw-cli
@@ -28,6 +57,10 @@ Check that the binary is on your path:
 ```sh
 aw --version
 ```
+
+A "command not found" means the directory holding `aw` is missing from your
+`PATH`. Add `export PATH="$HOME/.local/bin:$PATH"` to your shell profile and
+open a new terminal.
 
 ## Create the workspace
 
