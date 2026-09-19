@@ -11,13 +11,29 @@
   https://dprint.dev/install/.
 
 `aw doctor` checks git and garden and says what is missing. It does not check
-dprint. Until `aw` has a packaged release you also need a Rust toolchain to
-build it. Install it with rustup from https://rustup.rs, which gives you
-`cargo`, the command used in the next section.
+dprint.
 
 ## Install the tool
 
-There is no packaged release yet, so install from source with Cargo:
+Download the archive for your platform from the latest release at
+https://github.com/aw-tools/aw-cli/releases/latest, check it against the
+published checksums and put the binary on your path:
+
+```sh
+target=x86_64-unknown-linux-gnu
+base=https://github.com/aw-tools/aw-cli/releases/latest/download
+curl -LO "$base/aw-$target.tar.gz" -O "$base/SHA256SUMS"
+sha256sum -c SHA256SUMS --ignore-missing
+tar xzf "aw-$target.tar.gz"
+install -m 755 aw ~/.local/bin/aw
+```
+
+The other targets are `x86_64-unknown-linux-musl`, `aarch64-apple-darwin` and
+`x86_64-apple-darwin`. On macOS the checksum tool is
+`shasum -a 256 -c SHA256SUMS --ignore-missing`.
+
+Building from source needs a Rust toolchain at 1.85 or later. Install it with
+rustup from https://rustup.rs, which gives you `cargo`:
 
 ```sh
 cargo install --git https://github.com/aw-tools/aw-cli aw-cli
