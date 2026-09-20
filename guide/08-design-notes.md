@@ -6,7 +6,7 @@ case.
 
 ## Why the record lives outside the code
 
-A code repository exists for its code. Its commits, branches and pull requests
+A code repository exists for its code. Its commits, branches, and pull requests
 describe changes to that code, and its readers expect nothing else there. The
 thread of working on it, what was tried, why it was rejected and what comes
 next, has no natural place in it. Work also spans repositories, and a thread
@@ -73,8 +73,8 @@ release of the binary moves no clause.
 Records management has held for decades that classification determines
 disposition. A record's class decides how long it is kept and how it is
 destroyed, and its content does not. Content modelling in document systems
-supplies the same triple of type, policy and state. The contract applies both to
-a git repository.
+supplies the same triple of type, policy, and state. The contract applies both
+to a git repository.
 
 The taxonomy of kinds and classes drives agent behaviour, so an agent matches on
 kind and inherits a lifetime. Signed, linear version control is the disposition

@@ -48,7 +48,7 @@ for a given task. A member offers them only when the manifest opts it in.
   the record may hold and how each one lives and ends.
 - `artefacts.md`, the prose half of the registry. It explains each kind and
   gives its template.
-- `engagements/`, one directory per engagement. Each holds a plan, a ledger and
+- `engagements/`, one directory per engagement. Each holds a plan, a ledger, and
   any reports, plus two optional directories: `attachments/` for tracked source
   material and `tmp/` for untracked scratch.
 

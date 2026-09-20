@@ -17,7 +17,8 @@ brew install garden dprint
 ```
 
 `aw doctor` checks git and garden and says what is missing. It does not check
-dprint.
+dprint, so install that yourself. Workspace scripts also use `sh` and `awk`,
+which macOS and Linux provide.
 
 ## Install the tool
 
@@ -140,7 +141,7 @@ work: client names, machine facts, people, and decisions that were rejected.
 Pick a host whose confidentiality you would accept for that whole record.
 
 A hosted private repository suits personal or public work. A workspace that
-names clients, infrastructure or people belongs on infrastructure you control.
+names clients, infrastructure, or people belongs on infrastructure you control.
 
 Decide before the first push. Switching later is one remote change, but the
 history already pushed stays on the old host.
@@ -162,8 +163,8 @@ record against its rules. A commit that fails either check is refused.
 aw doctor
 ```
 
-`aw doctor` checks the tools it needs, whether each member's remote is reachable
-and whether the skill links are healthy. Each finding comes with a remedy.
+`aw doctor` checks git and garden, whether each member's remote is reachable and
+whether the skill links are healthy. Each finding comes with a remedy.
 
 ## The first session
 

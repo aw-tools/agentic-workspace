@@ -77,9 +77,9 @@ stops and presents it as a choice with evidence. It does not decide alone.
 
 A solo workspace has one agent, and it does everything above. A workspace that
 runs several agents at once splits them into two roles. The orchestrator is the
-one session that writes the record; it plans, dispatches and keeps the ledger. A
-worker takes one unit of work, writes its member and its own report, and nothing
-else.
+one session that writes the record; it plans, dispatches, and keeps the ledger.
+A worker takes one unit of work, writes its member and its own report, and
+nothing else.
 
 ## Taking template changes
 
