@@ -141,7 +141,7 @@ work: client names, machine facts, people, and decisions that were rejected.
 Pick a host whose confidentiality you would accept for that whole record.
 
 A hosted private repository suits personal or public work. A workspace that
-names clients, infrastructure or people belongs on infrastructure you control.
+names clients, infrastructure, or people belongs on infrastructure you control.
 
 Decide before the first push. Switching later is one remote change, but the
 history already pushed stays on the old host.

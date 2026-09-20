@@ -47,7 +47,7 @@ The `aw` command line tool manages the workspace:
 - `aw sync` fetches everything at once.
 - `aw status` reports each repository's position and whether its working tree is
   clean.
-- `aw doctor` checks the environment, the remotes and the skill links.
+- `aw doctor` checks the environment, the remotes, and the skill links.
 - `aw adopt` adds a checkout you already have to the manifest.
 
 A session starts by reading the state file. Then it does the work. Then it
