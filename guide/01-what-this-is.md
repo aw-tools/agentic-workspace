@@ -58,5 +58,5 @@ A written contract defines the layout. A conformance suite, a set of example
 workspaces that a conforming tool must accept or reject, proves that a tool
 follows the contract. So other tools can read the same record.
 
-Chapter 2 describes the shape of a workspace in detail, and chapter 3 shows how
-to start.
+[Chapter 2](02-the-shape-of-a-workspace.md) describes the shape of a workspace
+in detail, and [chapter 3](03-getting-started.md) shows how to start.

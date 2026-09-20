@@ -171,4 +171,5 @@ At the end of the session, the agent rewrites the state file to say where things
 stand, commits the layer and pushes it. The next session, on any machine, starts
 from that commit.
 
-Chapter 4 explains the record in full: what goes in each file and why.
+[Chapter 4](04-the-record.md) explains the record in full: what goes in each
+file and why.

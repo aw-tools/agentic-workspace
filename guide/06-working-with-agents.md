@@ -39,8 +39,8 @@ are signed, linear and made directly to the default branch. If the workspace has
 a remote, the agent pushes every commit at once.
 
 A fresh workspace has no remote, so the agent commits only until you add one.
-Chapter 3 says how to choose a remote, and the choice is yours, never the
-agent's.
+[Chapter 3](03-getting-started.md) says how to choose a remote, and the choice
+is yours, never the agent's.
 
 This authority covers the layer alone. It never covers a member or a secret. The
 list of things that must not enter the record is in `context/README.md`, and it
@@ -94,4 +94,5 @@ copy has diverged from what the entry expects.
 The procedure is in the template repository's `CONTRACT.md`. You run it by hand,
 because no `aw` verb performs it.
 
-Chapter 7 describes the skill that runs a multi-agent engagement.
+[Chapter 7](07-going-further.md) describes the skill that runs a multi-agent
+engagement.

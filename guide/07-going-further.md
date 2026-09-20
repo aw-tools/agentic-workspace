@@ -16,10 +16,10 @@ is `.claude/skills/`. The other is `.agents/skills/`.
 
 The `portable-skills` repository publishes two skills:
 
-- `aw-orienting` holds the refresh procedure chapter 6 describes: the cold
-  start, the targeted fetch mid-session, what to do on divergence and on a
-  failed fetch. The template's `AGENTS.md` points at it when the workspace opts
-  in.
+- `aw-orienting` holds the refresh procedure
+  [chapter 6](06-working-with-agents.md) describes: the cold start, the targeted
+  fetch mid-session, what to do on divergence and on a failed fetch. The
+  template's `AGENTS.md` points at it when the workspace opts in.
 - `orchestration-kernel` runs a multi-unit engagement across several agents.
 
 ## The orchestration kernel
@@ -31,9 +31,9 @@ dispatches it, and keeps the ledger. A worker receives one unit of work and one
 report file to write. It receives nothing about the shared state, because the
 handover holds everything it needs.
 
-The gates chapter 6 lists stay with you. A worker never waives one, whatever
-launched it. Each member's delivery model still governs how that worker's work
-lands.
+The gates [chapter 6](06-working-with-agents.md) lists stay with you. A worker
+never waives one, whatever launched it. Each member's delivery model still
+governs how that worker's work lands.
 
 On Claude Code the kernel binds the worker role to two agent definitions. One is
 for a worker that writes a repository, and one for a worker that writes nothing.
@@ -78,4 +78,4 @@ It comes in three parts:
 Lore is independent of the workspace. It reads a pattern repository and needs
 nothing from the record.
 
-Chapter 8 gives the reasons behind the design.
+[Chapter 8](08-design-notes.md) gives the reasons behind the design.
