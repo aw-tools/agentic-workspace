@@ -81,4 +81,5 @@ and a workspace that sets them differently still conforms.
 The lint is a shell script. Reimplementing it as an `aw` verb is planned and not
 built.
 
-Chapter 6 explains how a session works within these rules.
+[Chapter 6](06-working-with-agents.md) explains how a session works within these
+rules.

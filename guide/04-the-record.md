@@ -114,4 +114,4 @@ classes, their states, each kind's class and naming rule, the state file's caps,
 and the engagement register. `artefacts.md` is the prose beside it, giving each
 kind's purpose and template.
 
-Chapter 5 explains the contract these rules come from.
+[Chapter 5](05-the-contract.md) explains the contract these rules come from.

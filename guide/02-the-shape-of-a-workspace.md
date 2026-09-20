@@ -59,8 +59,8 @@ refuses a commit that breaks those rules.
 ## What is durable
 
 Durable means committed to the workspace. A remote is not required, but if the
-workspace has one, every commit is pushed there too. Chapter 3 says how to
-choose one.
+workspace has one, every commit is pushed there too.
+[Chapter 3](03-getting-started.md) says how to choose one.
 
 - The layer above is durable. A session commits it often, every time the state
   file changes.
@@ -71,4 +71,5 @@ choose one.
 - Secrets are never durable. The record goes wherever the workspace goes, so
   nothing goes in it that every copy may not hold.
 
-Chapter 3 creates a workspace and runs the first session in it.
+[Chapter 3](03-getting-started.md) creates a workspace and runs the first
+session in it.
