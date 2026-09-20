@@ -10,13 +10,29 @@
 - dprint, the formatter the pre-commit hook runs. Install it from
   https://dprint.dev/install/.
 
+[Homebrew](https://brew.sh) installs both:
+
+```sh
+brew install garden dprint
+```
+
 `aw doctor` checks git and garden and says what is missing. It does not check
 dprint.
 
 ## Install the tool
 
-Every release at https://github.com/aw-tools/aw-cli/releases/latest carries four
-archives. Pick the one that matches your machine:
+With Homebrew:
+
+```sh
+brew install aw-tools/tap/aw-cli
+```
+
+The formula is named for the project; the command is `aw`. `brew upgrade` moves
+you to a newer release.
+
+Without Homebrew, every release at
+https://github.com/aw-tools/aw-cli/releases/latest carries four archives. Pick
+the one that matches your machine:
 
 | Your machine                        | Archive                               |
 | ----------------------------------- | ------------------------------------- |
