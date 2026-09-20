@@ -43,6 +43,9 @@ that worker's allowance. The kernel does not publish the definitions themselves.
 On other agents, prose in the handover carries the roles, because Codex and
 Crush have no such format.
 
+The kernel's scripts use `jq`. Install it before you run the kernel, with
+`brew install jq` or your package manager.
+
 ## Dotfiles and sandbox profiles
 
 The `portable-dotfiles` repository holds a host configuration for macOS, Linux

@@ -17,7 +17,8 @@ brew install garden dprint
 ```
 
 `aw doctor` checks git and garden and says what is missing. It does not check
-dprint.
+dprint, so install that yourself. Workspace scripts also use `sh` and `awk`,
+which macOS and Linux provide.
 
 ## Install the tool
 
@@ -162,8 +163,8 @@ record against its rules. A commit that fails either check is refused.
 aw doctor
 ```
 
-`aw doctor` checks the tools it needs, whether each member's remote is reachable
-and whether the skill links are healthy. Each finding comes with a remedy.
+`aw doctor` checks git and garden, whether each member's remote is reachable and
+whether the skill links are healthy. Each finding comes with a remedy.
 
 ## The first session
 

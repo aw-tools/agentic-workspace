@@ -2,7 +2,7 @@
 # place a ceiling lives. Raise a line in a commit that says why.
 01-what-this-is.md 600
 02-the-shape-of-a-workspace.md 600
-03-getting-started.md 900
+03-getting-started.md 920
 04-the-record.md 900
 05-the-contract.md 700
 06-working-with-agents.md 700
