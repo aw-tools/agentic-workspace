@@ -7,7 +7,8 @@ independent, so add only the ones you want, in any order.
 ## Skills
 
 The public skills come from one member, `portable-skills`. Its skills sit in its
-`skills` directory, so the manifest entry names that directory.
+`skills` directory, so the manifest entry names that directory. The entry's
+`agents` line links the kernel's agent definitions.
 
 1. Add the member to `workspace.toml`:
 
@@ -16,9 +17,10 @@ The public skills come from one member, `portable-skills`. Its skills sit in its
    path = "portable-skills"
    url = "https://github.com/attila/portable-skills.git"
    skills = { dirs = ["skills"] }
+   agents = { dirs = ["skills/orchestration-kernel/agents"] }
    ```
 
-2. Clone it and link its skills:
+2. Clone it and link its skills and agent definitions:
 
    ```sh
    aw bootstrap
@@ -30,22 +32,21 @@ The public skills come from one member, `portable-skills`. Its skills sit in its
    aw doctor
    ```
 
-`aw bootstrap` reports two skills linked. `aw doctor` reports no broken skill
-links.
+`aw bootstrap` reports two skills and two agent definitions linked. `aw doctor`
+reports no broken skill links.
 
 To take specific skills only, add an `only` list naming them to the entry, such
-as `only = ["aw-orienting"]`.
+as `only = ["aw-orienting"]`. Keep `orchestration-kernel` in it, because each
+agent definition runs a script from that skill.
 
 ## The orchestration kernel
 
-The orchestration kernel arrives with the skills layer. Its Claude Code scripts
-read JSON with `jq`, so on Claude Code you install `jq` as well.
+The orchestration kernel and its two agent definitions arrive with the skills
+layer. The kernel's Claude Code scripts read JSON with `jq`, so on Claude Code
+you install `jq` as well.
 
 1. Add the skills layer above.
 2. Install `jq`, with `brew install jq` or your package manager.
-
-The kernel publishes no agent definitions for Claude Code.
-[Chapter 7](07-going-further.md) describes the two it expects.
 
 ## Sandbox profiles and dotfiles
 

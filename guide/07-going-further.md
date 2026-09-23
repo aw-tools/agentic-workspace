@@ -36,10 +36,10 @@ The gates [chapter 6](06-working-with-agents.md) lists stay with you. A worker
 never waives one, whatever launched it. Each member's delivery model still
 governs how that worker's work lands.
 
-On Claude Code the kernel binds the worker role to two agent definitions. One is
-for a worker that writes a repository, and one for a worker that writes nothing.
-It ships the guard hook each definition carries, which refuses writes outside
-that worker's allowance. The kernel does not publish the definitions themselves.
+The kernel starts each Claude Code worker from an agent definition, a file that
+names an agent and sets its tools and hooks. The kernel has two: one for a
+worker that writes a repository, and one for a worker that writes nothing. Each
+carries a guard hook, which refuses writes outside that worker's allowance.
 
 On other agents, prose in the handover carries the roles, because Codex and
 Crush have no such format.
