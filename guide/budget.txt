@@ -7,6 +7,6 @@
 05-the-contract.md 700
 06-working-with-agents.md 700
 07-going-further.md 750
-08-adding-layers.md 650
+08-adding-layers.md 700
 09-design-notes.md 800
 glossary.md 850
