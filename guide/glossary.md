@@ -42,4 +42,6 @@ use keeps the exact name below.
 | orchestrator         | The one session that writes the record in a multi-agent engagement: plans, dispatches, keeps the ledger.       | 6          |
 | worker               | A session that takes one unit of work, writes its member and its own report, and nothing else.                 | 6          |
 | orchestration kernel | The skill that runs orchestrator and workers across a multi-unit engagement.                                   | 7          |
+| agent definition     | A Claude Code file that names an agent and sets its tools and hooks.                                           | 7          |
+| profile              | A file that lists what a sandboxed agent may read, write and reach.                                            | 7          |
 | pattern              | One markdown file in a lore corpus, holding a convention or practice for an agent to apply.                    | 7          |

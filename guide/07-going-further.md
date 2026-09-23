@@ -2,7 +2,7 @@
 
 A workspace with `aw`, the template, and the record is complete on its own.
 Three optional layers sit above it. Each is public, and you add it by opting in.
-No step-by-step install story for them is written yet.
+[Chapter 8](08-adding-layers.md) adds each one.
 
 ## Skills
 
@@ -36,29 +36,31 @@ The gates [chapter 6](06-working-with-agents.md) lists stay with you. A worker
 never waives one, whatever launched it. Each member's delivery model still
 governs how that worker's work lands.
 
-On Claude Code the kernel binds the worker role to two agent definitions. One is
-for a worker that writes a repository, and one for a worker that writes nothing.
-It ships the guard hook each definition carries, which refuses writes outside
-that worker's allowance. The kernel does not publish the definitions themselves.
+The kernel starts each Claude Code worker from an agent definition, a file that
+names an agent and sets its tools and hooks. The kernel has two: one for a
+worker that writes a repository, and one for a worker that writes nothing. Each
+carries a guard hook, which refuses writes outside that worker's allowance.
 
 On other agents, prose in the handover carries the roles, because Codex and
 Crush have no such format.
 
-The kernel's scripts use `jq`. Install it before you run the kernel, with
-`brew install jq` or your package manager.
+## Sandbox profiles and dotfiles
 
-## Dotfiles and sandbox profiles
+Run every agent in a sandbox. An agent runs commands with your permissions, so a
+sandbox limits what one wrong or misled command can read, change or send.
+[nono](https://nono.sh) is one such sandbox. It runs a tool with explicit
+filesystem, environment and network grants.
+
+Dotfiles are the configuration files in your home directory, such as your shell
+and git settings. You can keep yours in a git repository. GNU Stow, a tool that
+links a directory's files into another directory, then links them into place.
 
 The [`portable-dotfiles`](https://github.com/attila/portable-dotfiles)
-repository holds a host configuration for macOS, Linux, and remote coding
-environments. The layout suits GNU Stow, so each module maps onto the same path
-under your home directory. It covers the shell, the editor defaults, git, the
-terminal, and the agent instruction links.
+repository holds one author's dotfiles for macOS, Linux and remote coding
+environments. They are a worked example, not a setup to adopt. Keep your own and
+borrow what fits. The part that matters for a workspace is the `nono` module.
 
-The part that matters for a workspace is the `nono` module. `nono` is a
-capability-based sandbox that runs a tool with explicit filesystem, environment,
-and network grants.
-
+A profile is a file that lists what a sandboxed agent may read, write and reach.
 The module holds profiles for Claude Code, Codex, and Crush, each extending a
 shared base profile. The Claude Code and Codex profiles also extend a package
 that nono supplies, which you install first. The profiles are examples: review
@@ -77,12 +79,16 @@ It comes in three parts:
 - `lore`, the engine, a single Rust binary with one runtime dependency, Ollama,
   for embeddings. Releases carry prebuilt binaries with checksums.
 - [`lore-patterns`](https://github.com/attila/lore-patterns), one author's
-  corpus, shared as a reference for the shape of a pattern file rather than as
-  conventions to adopt.
+  corpus, a worked example of pattern files rather than conventions to adopt.
+  Write your own.
 - The Claude Code plugin, inside the engine repository, which adds the search
   server plus hooks that inject a relevant pattern before an edit.
 
 Lore is independent of the workspace. It reads a pattern repository and needs
 nothing from the record.
 
-[Chapter 8](08-design-notes.md) gives the reasons behind the design.
+The
+[pattern authoring guide](https://github.com/attila/lore/blob/main/docs/pattern-authoring-guide.md)
+says how to write a pattern an agent follows.
+
+[Chapter 9](09-design-notes.md) gives the reasons behind the design.
