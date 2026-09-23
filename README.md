@@ -10,8 +10,8 @@ implementations.
 
 [The guide](guide/01-what-this-is.md) is the human narrative of the whole
 toolkit: what a workspace is, how to start one, what the record holds, and how
-to work in it with agents. Eight chapters and a glossary, under `guide/`, read
-in order. Start there.
+to work in it with agents. Nine chapters and a glossary, under `guide/`, read in
+order. Start there.
 
 ## The contract
 
