@@ -20,9 +20,12 @@ aw status
 
 If the workspace is behind its remote and not ahead, the agent fast-forwards it.
 If it is both ahead and behind, the agent stops and reports the divergence,
-because resolving it is your call. The agent never fast-forwards a member that
-is behind, because that working tree belongs to whoever is working in it. It
-refreshes the member's remote refs and nothing else.
+because resolving it is your call.
+
+The agent never brings a member up to date on its own, because that working tree
+belongs to whoever is working in it. It refreshes the member's remote refs and
+nothing else. When you ask, it runs `aw fast-forward`. It brings members up to
+date no other way.
 
 The agent refreshes again mid-session before three actions:
 
