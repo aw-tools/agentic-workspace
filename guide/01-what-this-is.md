@@ -47,6 +47,8 @@ The `aw` command line tool manages the workspace:
 - `aw sync` fetches everything at once.
 - `aw status` reports each repository's position and whether its working tree is
   clean.
+- `aw fast-forward` brings the members that are safe to move up to date with
+  their remotes.
 - `aw doctor` checks the environment, the remotes, and the skill links.
 - `aw adopt` adds a checkout you already have to the manifest.
 

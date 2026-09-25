@@ -184,6 +184,10 @@ repository's position against its remote and whether its working tree is clean.
 A session never asserts a repository's state from memory: it fetches, then
 reads.
 
+`aw fast-forward` brings members that fell behind up to date. It fetches, then
+moves only the members safe to move and reports the rest.
+`aw fast-forward --help` lists what makes a member safe to move.
+
 At the end of the session, the agent rewrites the state file to say where things
 stand, commits the layer and pushes it. The next session, on any machine, starts
 from that commit.
