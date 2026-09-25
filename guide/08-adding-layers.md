@@ -116,8 +116,14 @@ git repository of pattern files to index.
    brew services start ollama
    ```
 
-2. Install `lore` from a release, following the install section of the
-   [lore README](https://github.com/attila/lore#install).
+2. Install `lore` with Homebrew:
+
+   ```sh
+   brew install attila/tap/lore
+   ```
+
+   Without Homebrew, install it from a release, following the install section of
+   the [lore README](https://github.com/attila/lore#install).
 3. Point lore at your patterns. Without any yet, create a git repository with
    one pattern file, following the pattern authoring guide chapter 7 links.
 
