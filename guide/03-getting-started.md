@@ -6,19 +6,14 @@
 
 - git.
 - garden, version 2.6 or later. `aw bootstrap` hands the cloning of members to
-  it. Install it from https://github.com/garden-rs/garden.
+  it. Homebrew installs it with `aw`. Otherwise install it from
+  https://github.com/garden-rs/garden.
 - dprint, the formatter the pre-commit hook runs. Install it from
-  https://dprint.dev/install/.
-
-[Homebrew](https://brew.sh) installs both:
-
-```sh
-brew install garden dprint
-```
+  https://dprint.dev/install/ or with `brew install dprint`.
 
 `aw doctor` checks git and garden and says what is missing. It does not check
-dprint, so install that yourself. Workspace scripts also use `sh` and `awk`,
-which macOS and Linux provide.
+dprint. Workspace scripts also use `sh` and `awk`, which macOS and Linux
+provide.
 
 ## Install the tool
 
@@ -94,19 +89,19 @@ deny-all `.gitignore` and a manifest, and runs `git init`. The manifest records
 which release the workspace came from. It makes no commit. The first commit is
 yours, so that you see what the workspace tracks before anything is recorded.
 
-## Declare the members
+## Add the members
 
-Open `workspace.toml` and add one block per member:
+Clone the repositories you work on together into the workspace. Then adopt each
+one:
 
-```toml
-[[repo]]
-path = "service-api"
-url = "git@github.com:example/service-api.git"
-branch = "main"
+```sh
+git clone git@github.com:you/myrepo.git
+aw adopt myrepo
 ```
 
-`path` is where the member is checked out, relative to the workspace root.
-`branch` is optional; without it the remote's default branch is used.
+`aw adopt` adds the checkout to the manifest, `workspace.toml`, with its remote
+and its checked-out branch. [Chapter 8](08-adding-layers.md) shows an entry
+written by hand.
 
 ## Bootstrap
 
@@ -114,9 +109,9 @@ branch = "main"
 aw bootstrap
 ```
 
-`aw bootstrap` clones each member that is missing, applies the manifest's
-configuration and links any skills the members offer. It reports one line per
-member.
+`aw bootstrap` applies the manifest's configuration to each member and links the
+members' skills. It reports one line per member. On a new machine it also clones
+the missing members.
 
 Then look before you commit:
 
