@@ -1,6 +1,6 @@
 name: Site
 
-# Asks aw.tools to rebuild when the guide or the spec changes on main, and when
+# Asks aw.tools to rebuild when the guide, the spec or its errata change on main, and when
 # a spec revision is frozen under a spec-r<N> tag. The token comes from the
 # aw-tools-site-trigger App, which is installed on aw.tools alone; the
 # site-trigger environment admits only main and spec-r* tags.
@@ -12,6 +12,7 @@ on:
     paths:
       - "guide/**"
       - "SPEC.md"
+      - "SPEC-ERRATA.md"
 
 permissions: {}
 

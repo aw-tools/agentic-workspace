@@ -1,0 +1,40 @@
+#!/bin/sh
+# Checks that SPEC.md's frontmatter revision agrees with the "Contract
+# revision N. Published <date>." line before the first "## " heading. Fails
+# when either is missing, malformed, or they disagree.
+set -eu
+root=$(cd "$(dirname "$0")/.." && pwd)
+spec="$root/SPEC.md"
+
+if [ ! -f "$spec" ]; then
+  echo "spec-revision: $spec does not exist" >&2
+  exit 1
+fi
+
+fm_revision=$(awk '
+  NR == 1 { if ($0 != "---") exit 1; next }
+  /^---$/ { exit }
+  /^revision:[ \t]*[0-9]+[ \t]*$/ { gsub(/[^0-9]/, "", $0); print; found=1 }
+  END { if (!found) exit 1 }
+' "$spec") || {
+  echo "spec-revision: no numeric 'revision' field in SPEC.md frontmatter" >&2
+  exit 1
+}
+
+pre_heading=$(awk '/^## /{exit} {print}' "$spec")
+
+text_revision=$(printf '%s\n' "$pre_heading" |
+  grep -m1 -E '^\*\*Contract revision [0-9]+\.\*\* Published .+\.$' |
+  sed -E 's/^\*\*Contract revision ([0-9]+)\.\*\*.*/\1/') || true
+
+if [ -z "$text_revision" ]; then
+  echo "spec-revision: no '**Contract revision N.** Published <date>.' line before the first '## ' heading" >&2
+  exit 1
+fi
+
+if [ "$fm_revision" != "$text_revision" ]; then
+  echo "spec-revision: frontmatter says $fm_revision, text says $text_revision" >&2
+  exit 1
+fi
+
+echo "spec-revision: frontmatter and text agree on revision $fm_revision"

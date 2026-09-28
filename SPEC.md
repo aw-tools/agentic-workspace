@@ -1,3 +1,7 @@
+---
+revision: 1
+---
+
 # The Agentic Workspace artefact model
 
 **Contract revision 1.** Published 2026-09-16.
