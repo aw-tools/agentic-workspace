@@ -26,6 +26,7 @@ jobs:
       guide-lint-rules: ${{ steps.areas.outputs.guide-lint-rules }}
       workflows: ${{ steps.areas.outputs.workflows }}
       scripts: ${{ steps.areas.outputs.scripts }}
+      spec: ${{ steps.areas.outputs.spec }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
@@ -39,7 +40,7 @@ jobs:
         run: |
           if [[ -z "$BASE" || "$BASE" == 0000000000000000000000000000000000000000 ]] || ! git cat-file -e "$BASE" 2>/dev/null; then
             echo "No usable base commit; every area counts as changed."
-            printf '%s\n' guide=true guide-lint-rules=true workflows=true scripts=true >> "$GITHUB_OUTPUT"
+            printf '%s\n' guide=true guide-lint-rules=true workflows=true scripts=true spec=true >> "$GITHUB_OUTPUT"
             exit 0
           fi
           files=$(git diff --name-only "$BASE...HEAD")
@@ -55,6 +56,7 @@ jobs:
           area guide-lint-rules '^(\.vale\.ini$|\.vale/|bin/test-lint-guide$|\.github/workflows/ci\.yml$)'
           area workflows '^\.github/workflows/'
           area scripts '^(bin/|\.github/workflows/ci\.yml$)'
+          area spec '^(SPEC\.md$|bin/check-spec-revision$|\.github/workflows/ci\.yml$)'
 
   format:
     name: Check format
@@ -131,6 +133,18 @@ jobs:
       - name: Lint the scripts
         run: shellcheck bin/*
 
+  spec-revision:
+    name: Check spec revision
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.spec == 'true'
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+
+      - name: Check the frontmatter matches the text
+        run: bin/check-spec-revision
+
   workflows:
     name: Lint workflows
     runs-on: ubuntu-latest
@@ -153,13 +167,13 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
-    needs: [changes, format, guide, guide-lint-rules, scripts, workflows]
+    needs: [changes, format, guide, guide-lint-rules, scripts, spec-revision, workflows]
     if: always()
     steps:
       - name: Check every job
         run: |
           always=("${{ needs.changes.result }}" "${{ needs.format.result }}")
-          conditional=("${{ needs.guide.result }}" "${{ needs.guide-lint-rules.result }}" "${{ needs.scripts.result }}" "${{ needs.workflows.result }}")
+          conditional=("${{ needs.guide.result }}" "${{ needs.guide-lint-rules.result }}" "${{ needs.scripts.result }}" "${{ needs.spec-revision.result }}" "${{ needs.workflows.result }}")
           for r in "${always[@]}"; do
             if [[ "$r" != "success" ]]; then
               echo "A job ended with result: $r"
