@@ -32,8 +32,8 @@ The public skills come from one member, `portable-skills`. Its skills sit in its
    aw doctor
    ```
 
-`aw bootstrap` reports two skills and two agent definitions linked. `aw doctor`
-reports no broken skill links.
+`aw bootstrap` reports three skills and two agent definitions linked.
+`aw doctor` reports no broken skill links.
 
 To take specific skills only, add an `only` list naming them to the entry, such
 as `only = ["aw-orienting"]`. Keep `orchestration-kernel` in it, because each

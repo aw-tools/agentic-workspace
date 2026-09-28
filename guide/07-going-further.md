@@ -15,12 +15,14 @@ workspace root. Claude Code and Codex therefore read the same file. One surface
 is `.claude/skills/`. The other is `.agents/skills/`.
 
 The [`portable-skills`](https://github.com/attila/portable-skills) repository
-publishes two skills:
+publishes three skills:
 
 - `aw-orienting` holds the refresh procedure
   [chapter 6](06-working-with-agents.md) describes: the cold start, the targeted
   fetch mid-session, what to do on divergence and on a failed fetch. The
   template's `AGENTS.md` points at it when the workspace opts in.
+- `aw-wrap` makes a session durable before it ends: it writes what the session
+  learned into the record, then commits the layer.
 - `orchestration-kernel` runs a multi-unit engagement across several agents.
 
 ## The orchestration kernel
