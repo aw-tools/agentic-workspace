@@ -98,8 +98,8 @@ git log --diff-filter=D --name-only
 
 ## The lint
 
-`bin/lint-artefacts` runs on every commit through the pre-commit hook. It reads
-the registry, then checks the markdown files the commit stages:
+`aw lint` runs on every commit through the pre-commit hook. It reads the
+registry, then checks the markdown files the commit stages:
 
 - that the frontmatter is present;
 - that the kind is registered;

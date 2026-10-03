@@ -23,7 +23,7 @@ The last column links to the chapter that introduces the term and explains it.
 | skill                | An instruction file an agent loads for a given task. A member offers skills only when the manifest opts it in. | [2](02-the-shape-of-a-workspace.md) |
 | thread of work       | One live line of work. The state file holds one item for each.                                                 | [2](02-the-shape-of-a-workspace.md) |
 | registry             | `artefacts.toml` and `artefacts.md`. The kinds of file the record may hold and how each lives and ends.        | [2](02-the-shape-of-a-workspace.md) |
-| lint                 | `bin/lint-artefacts`. Checks the record against the contract before each commit.                               | [2](02-the-shape-of-a-workspace.md) |
+| lint                 | `aw lint`. Checks the record against the contract before each commit.                                          | [2](02-the-shape-of-a-workspace.md) |
 | durable              | Committed to the workspace, and pushed if it has a remote.                                                     | [2](02-the-shape-of-a-workspace.md) |
 | frontmatter          | The short header at the start of a file in the record, naming its kind and status.                             | [4](04-the-record.md)               |
 | kind                 | What a file in the record is: a plan, a ledger, a handover. Declared in the frontmatter.                       | [4](04-the-record.md)               |
