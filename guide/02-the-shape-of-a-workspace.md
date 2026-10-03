@@ -17,8 +17,8 @@ The layer holds:
 - `AGENTS.md`, the instructions an agent reads first. `CLAUDE.md` is a link to
   it.
 - `bin/`, the scripts. `bin/bootstrap` calls `aw bootstrap`.
-  `bin/lint-artefacts` checks the record against the contract before each
-  commit.
+- `.githooks/`, the pre-commit hook. It runs `aw lint`, the lint, which checks
+  the record against the contract before each commit.
 - `context/`, the record itself.
 - `README.md`, for the humans who open the repository on its host.
 

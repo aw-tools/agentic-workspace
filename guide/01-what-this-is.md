@@ -51,6 +51,7 @@ The `aw` command line tool manages the workspace:
   their remotes.
 - `aw doctor` checks the environment, the remotes, and the skill links.
 - `aw adopt` adds a checkout you already have to the manifest.
+- `aw lint` checks the record against the contract.
 
 A session starts by reading the state file. Then it does the work. Then it
 rewrites the state file and commits it. Because the record lives in the
