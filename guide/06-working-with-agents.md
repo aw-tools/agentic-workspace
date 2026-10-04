@@ -60,7 +60,8 @@ A member that declares nothing takes the conservative default. The agent
 commits, pushes a feature branch and opens a draft pull request, then stops.
 Marking the pull request ready and merging it are yours.
 
-Once you merge, the agent restores the checkout without being asked: it checks
+Once you merge, the agent restores the checkout without being asked. If the work
+ran in a separate working copy, the agent removes that copy. Otherwise it checks
 out the default branch, fast-forwards it and deletes the merged local branch. A
 checkout left on a merged branch reads to the next session as live work.
 

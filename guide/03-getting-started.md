@@ -110,8 +110,12 @@ aw bootstrap
 ```
 
 `aw bootstrap` applies the manifest's configuration to each member and links the
-members' skills. It reports one line per member. On a new machine it also clones
-the missing members.
+members' skills. It prints a line per member, skill and step. On a new machine
+it clones the missing members.
+
+`aw bootstrap` turns on the pre-commit hook too. From then on, dprint checks
+each commit's formatting. The lint checks the record against its rules. The hook
+refuses a commit that fails either check.
 
 Then look before you commit:
 
@@ -140,17 +144,6 @@ names clients, infrastructure, or people belongs on infrastructure you control.
 
 Decide before the first push. Switching later is one remote change, but the
 history already pushed stays on the old host.
-
-## Turn on the hook
-
-Turn on the pre-commit hook:
-
-```sh
-bin/install-hooks
-```
-
-After that, dprint checks each commit's formatting and the lint checks the
-record against its rules. A commit that fails either check is refused.
 
 ## Check the environment
 
