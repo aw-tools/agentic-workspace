@@ -5,7 +5,7 @@
 03-getting-started.md 950
 04-the-record.md 900
 05-the-contract.md 700
-06-working-with-agents.md 700
+06-working-with-agents.md 715
 07-going-further.md 750
 08-adding-layers.md 700
 09-design-notes.md 800
