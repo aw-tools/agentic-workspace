@@ -110,12 +110,10 @@ aw bootstrap
 ```
 
 `aw bootstrap` applies the manifest's configuration to each member and links the
-members' skills. It prints a line per member, skill and step. On a new machine
-it clones the missing members.
+members' skills. On a new machine it clones the missing members.
 
-`aw bootstrap` turns on the pre-commit hook too. From then on, dprint checks
-each commit's formatting. The lint checks the record against its rules. The hook
-refuses a commit that fails either check.
+`aw bootstrap` also turns on the pre-commit hook. The hook refuses a commit that
+dprint or the lint rejects.
 
 Then look before you commit:
 
