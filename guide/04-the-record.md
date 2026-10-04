@@ -4,10 +4,10 @@ The record is the set of files under `context/` that carry what a session knew.
 
 ## Kinds and classes
 
-Every file in the record opens with a short header, called frontmatter, that
-names its kind and its status. The kind says what the file is. The status says
-where it is in its life. A third property, the class, is never written in the
-file: the registry derives it from the kind.
+A file in the record opens with a short header, called frontmatter, that names
+its kind and its status. The kind says what the file is. The status says where
+it is in its life. A third property, the class, is never written in the file:
+the registry derives it from the kind.
 
 The class decides the file's lifetime. There are four:
 
@@ -99,7 +99,7 @@ git log --diff-filter=D --name-only
 ## The lint
 
 `aw lint` runs on every commit through the pre-commit hook. It reads the
-registry, then checks the markdown files the commit stages:
+registry, then checks every staged markdown file that is not exempt:
 
 - that the frontmatter is present;
 - that the kind is registered;
@@ -108,6 +108,9 @@ registry, then checks the markdown files the commit stages:
 - that a closed engagement holds no open plan or ledger.
 
 It also checks the state file's caps. A commit that fails is refused.
+
+The files under `attachments/` are exempt, and so is any path that
+`.awlintignore` lists. The template's copy lists every `README.md`.
 
 The registry is two files. `artefacts.toml` is the machine authority: the
 classes, their states, each kind's class and naming rule, the state file's caps,

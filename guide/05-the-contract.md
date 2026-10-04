@@ -74,9 +74,11 @@ class. A tool that gives a kind a meaning beyond its registry entry fails them.
 
 `aw lint` is the implementation this guide describes. It enforces the contract's
 clauses at commit time. It also enforces rules of its own that the contract
-leaves open: the topic-first layout, the state file's caps, the staleness
-warning and remits. Those are this implementation's tuning, and a workspace that
-sets them differently still conforms.
+leaves open. One is a layout rule: shared files sit at the top of `context/`,
+and each engagement's files sit in its own directory. The others are the state
+file's caps, the staleness warning and remits. These rules are this
+implementation's tuning, and a workspace that sets them differently still
+conforms.
 
 The caps, the staleness warning and remits run only when the registry has a
 `[state]` table. The template's registry has one. Remove the table to turn the

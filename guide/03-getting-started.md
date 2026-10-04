@@ -132,13 +132,13 @@ A remote is optional. Without one the record lives on one machine and is durable
 only there. Add one if you want the record on more than one machine, or want a
 copy that survives the machine.
 
-Choose the host for the record, not for the code. The code repositories carry
-what a reader of the code may see. The record carries the whole thread of your
-work: client names, machine facts, people, and decisions that were rejected.
-Pick a host whose confidentiality you would accept for that whole record.
+Choose the host for the record, not for the code. The record holds more than the
+code shows, such as client names, people and rejected decisions. Pick a host you
+would trust with the whole record:
 
-A hosted private repository suits personal or public work. A workspace that
-names clients, infrastructure, or people belongs on infrastructure you control.
+- A workspace for personal or public work suits a hosted private repository.
+- A workspace that names clients, machines or people belongs on infrastructure
+  you control.
 
 Decide before the first push. Switching later is one remote change, but the
 history already pushed stays on the old host.
