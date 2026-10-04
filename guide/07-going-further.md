@@ -6,12 +6,12 @@ Three optional layers sit above it. Each is public, and you add it by opting in.
 
 ## Skills
 
-A skill is an instruction file an agent loads for a given task. A member offers
-skills only when the manifest opts it in. The member's entry then carries a
-`skills` field, naming the directories to read and which skills to take.
+A skill is a directory of instructions an agent loads for a given task. A member
+offers skills only when the manifest opts it in. The member's entry then carries
+a `skills` field, naming the directories to read and which skills to take.
 
 `aw bootstrap` and `aw sync` then link each skill into the agent surfaces at the
-workspace root. Claude Code and Codex therefore read the same file. One surface
+workspace root. Claude Code and Codex therefore read the same skill. One surface
 is `.claude/skills/`. The other is `.agents/skills/`.
 
 The [`portable-skills`](https://github.com/attila/portable-skills) repository

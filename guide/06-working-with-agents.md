@@ -9,9 +9,8 @@ The agent reads `AGENTS.md` at the workspace root first. `CLAUDE.md` is a link
 to it, so Claude Code and Codex read the same file. `AGENTS.md` sends the agent
 to the state file and sets the rules below.
 
-A checkout is one of several. Other sessions and other machines push to the same
-remotes, and a stale read looks exactly like a current one. So the agent
-refreshes before it reads:
+Other sessions and other machines push to the same remotes. A stale read looks
+exactly like a current one, so the agent refreshes before it reads:
 
 ```sh
 aw sync
@@ -67,7 +66,8 @@ branch. A member left on a merged branch reads to the next session as live work.
 
 ## Gates
 
-Two actions need your sign-off in every workspace, whatever a member declares:
+A gate is an action that needs your sign-off in every workspace, whatever a
+member declares. There are two:
 
 - The first commit of a member that does not yet exist.
 - Creating a remote for any repository.
@@ -90,13 +90,9 @@ nothing else.
 The template records every governed change to itself as a numbered entry in its
 own changelog. Your manifest records which entry your workspace last applied.
 
-To bring the layer up to date, the agent clones the template into scratch and
-reads the entries above that number. It applies them one at a time, committing
-after each. It stops and asks whenever an entry's verification fails or your
-copy has diverged from what the entry expects.
-
-The procedure is in the template repository's `CONTRACT.md`. You run it by hand,
-because no `aw` verb performs it.
+The template repository's `CONTRACT.md` holds the procedure that applies the
+newer entries, under "Replaying governed changes". No `aw` verb performs it, so
+you or your agent follow it by hand.
 
 [Chapter 7](07-going-further.md) describes the skill that runs a multi-agent
 engagement.

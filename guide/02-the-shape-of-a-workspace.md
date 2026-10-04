@@ -29,8 +29,9 @@ workspace does not own it. Each member keeps its own remote and branches, and
 its own rules for how work lands. `aw bootstrap` clones any member that is
 missing, and `aw sync` fetches every member at once.
 
-A member may also offer skills, which are instruction files an agent can load
-for a given task. A member offers them only when the manifest opts it in.
+A member may also offer skills, which are directories of instructions an agent
+can load for a given task. A member offers them only when the manifest opts it
+in.
 
 ## The record
 
@@ -52,9 +53,10 @@ for a given task. A member offers them only when the manifest opts it in.
   any reports, plus two optional directories: `attachments/` for tracked source
   material and `tmp/` for untracked scratch.
 
-Every file in the record declares what kind of file it is and its current status
-in a short header. The registry says which statuses each kind may take. The lint
-refuses a commit that breaks those rules.
+A short header in each markdown file of the record says what kind of file it is
+and its current status. Files the lint exempts carry none. The registry says
+which statuses each kind may take. The lint refuses a commit that breaks those
+rules.
 
 ## What is durable
 
