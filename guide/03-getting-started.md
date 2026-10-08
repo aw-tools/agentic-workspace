@@ -26,16 +26,17 @@ brew install aw-tools/tap/aw-cli
 The formula is named for the project; the command is `aw`. `brew upgrade` moves
 you to a newer release.
 
-Without Homebrew, every release at
-https://github.com/aw-tools/aw-cli/releases/latest carries four archives. Pick
+Without Homebrew, the latest release at
+https://github.com/aw-tools/aw-cli/releases/latest carries five archives. Pick
 the one that matches your machine:
 
-| Your machine                        | Archive                               |
-| ----------------------------------- | ------------------------------------- |
-| Mac with Apple silicon              | `aw-aarch64-apple-darwin.tar.gz`      |
-| Mac with an Intel processor         | `aw-x86_64-apple-darwin.tar.gz`       |
-| Linux, most distributions           | `aw-x86_64-unknown-linux-gnu.tar.gz`  |
-| Linux built on musl, such as Alpine | `aw-x86_64-unknown-linux-musl.tar.gz` |
+| Your machine                           | Archive                                |
+| -------------------------------------- | -------------------------------------- |
+| Mac with Apple silicon                 | `aw-aarch64-apple-darwin.tar.gz`       |
+| Mac with an Intel processor            | `aw-x86_64-apple-darwin.tar.gz`        |
+| x86-64 Linux, most distributions       | `aw-x86_64-unknown-linux-gnu.tar.gz`   |
+| x86-64 Linux with musl, such as Alpine | `aw-x86_64-unknown-linux-musl.tar.gz`  |
+| 64-bit Arm Linux                       | `aw-aarch64-unknown-linux-musl.tar.gz` |
 
 Download it together with the checksums file, check it and put the binary on
 your path. Set `target` to the middle part of your archive name:
