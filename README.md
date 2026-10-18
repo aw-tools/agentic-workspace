@@ -24,6 +24,10 @@ the fixtures, each a small workspace with the verdict a conforming
 implementation must give. An implementation conforms to a revision when it gives
 the expected verdict on every fixture of that revision.
 
+A proposal publishes a change to the contract before any revision carries it,
+with fixtures of its own. A workspace can opt in to a proposal early. The
+proposals live under `proposals/`.
+
 ## The tools
 
 [aw-cli](https://github.com/aw-tools/aw-cli) is the command line tool that
@@ -40,10 +44,10 @@ Not accepting external contributions yet. See
 
 Copyright 2026 Front Seed Labs Ltd.
 
-The specification and the guide are licensed under
-[CC BY 4.0](LICENSE-CC-BY-4.0). The conformance suite under `suite/` is licensed
-under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
-The lint rules under `.vale/` are MIT; five of them are adapted from
-[gds-vale-styles](https://github.com/alphagov/gds-vale-styles), Copyright 2019
-Government Digital Service, under
+The specification, its proposals under `proposals/`, and the guide are licensed
+under [CC BY 4.0](LICENSE-CC-BY-4.0). The conformance suite under `suite/` is
+licensed under either [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at
+your option. The lint rules under `.vale/` are MIT; five of them are adapted
+from [gds-vale-styles](https://github.com/alphagov/gds-vale-styles), Copyright
+2019 Government Digital Service, under
 [its MIT licence](.vale/styles/Guide/LICENCE-GDS.md).
