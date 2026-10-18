@@ -47,6 +47,19 @@ always declares the artefacts. Clause 4.1.3 is a permission and has nothing to
 violate. The SHOULD clauses 3.4 and 3.5 hold a violating fixture with
 `outcome = "pass"`: a conforming implementation may warn, and must not fail.
 
+## Proposals
+
+A draft proposal's fixtures sit under `proposals/<name>/`, in the same form, and
+cover every clause the proposal changes or adds. A runner runs them only when
+testing an implementation's support for the proposal, together with the fixtures
+of the revision it amends. A proposal fixture named like one of that revision's
+replaces it, and the proposal lists each one. A proposal states any harness
+convention its fixtures add.
+
+When a revision accepts a proposal, its fixtures move into that revision's
+directory, with any harness convention they add. Withdrawing a proposal deletes
+its fixtures. Git history keeps them.
+
 ## Vocabulary
 
 Fixtures use kind names foreign to any particular workspace, and at least one

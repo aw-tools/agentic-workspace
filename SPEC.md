@@ -4,7 +4,7 @@ revision: 1
 
 # The Agentic Workspace artefact model
 
-**Contract revision 1.** Published 2026-10-03.
+**Contract revision 1.** Published 2026-10-18.
 
 This document specifies how to classify the documents an agentic workspace
 accumulates and what eventually happens to each of them. It names no tool. Any
@@ -45,6 +45,20 @@ revision where it is.
 
 **1.1.1** An implementation MUST refuse a revision it does not recognise, rather
 than applying the rule set of a different revision.
+
+### Proposals
+
+This subsection is not normative.
+
+A proposal publishes a change to the contract before any revision carries it.
+Until a revision takes it in, it binds only a workspace that opts in, and
+changes nothing for one that does not. Publishing one leaves the revision number
+where it is. Like this document, a proposal governs what may be done to
+artefacts, and leaves the choices of section 6 to the workspace.
+
+A workspace opts in by naming the proposal beside the revision it states.
+Conforming to that revision with the proposal means passing the proposal's
+fixtures, and those of the revision it does not replace.
 
 ### Version control
 
