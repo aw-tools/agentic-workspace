@@ -10,7 +10,10 @@
   "excludes": [
     "**/tmp",
     "LICENSE-*",
-    "**/LICENCE-*"
+    "**/LICENCE-*",
+    "suite/proposals/supersession-marks/3.6-entries-merged/**/VERDICTS.md",
+    "suite/proposals/supersession-marks/3.6-whitespace-changed/**/VERDICTS.md",
+    "suite/proposals/supersession-marks/3.9-supersedes-later-entry/VERDICTS.md"
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.22.0.wasm",
