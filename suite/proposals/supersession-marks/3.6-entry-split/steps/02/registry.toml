@@ -3,6 +3,3 @@ statuses = ["active", "superseded"]
 
 [kind.verdict]
 class = "binding"
-
-[kind.ruling]
-class = "binding"
