@@ -10,7 +10,9 @@
   "excludes": [
     "**/tmp",
     "LICENSE-*",
-    "**/LICENCE-*"
+    "**/LICENCE-*",
+    "suite/rev*/*/**",
+    "suite/proposals/*/*/**"
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.22.0.wasm",
