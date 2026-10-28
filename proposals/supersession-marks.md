@@ -21,9 +21,11 @@ it.
 
 This proposal lets both entries carry a mark naming the other. A mark records
 how entries relate and leaves unchanged what each entry decided, which is what
-clause 3.6 exists to keep. A mark may therefore be added, changed, or removed at
-any time, and history records each change. A workspace can then mark the
-supersessions it recorded before opting in, and correct a wrong mark.
+clause 3.6 exists to keep. A mark may therefore be added at any time, so a
+workspace can mark the supersessions it recorded before opting in. Readers and
+implementations rely on the entries a mark names, so once named, an entry stays
+named, but the form of a mark may change. A workspace that noted supersessions
+in an older form, here called legacy notes, can then rewrite each as a mark.
 
 Adding a mark to an entry can move the line breaks of its paragraph, when the
 text is wrapped to a fixed width. Clause 3.6 therefore protects what body
@@ -45,6 +47,10 @@ These definitions join section 3, after the table and before clause 3.1:
 > entries it names, wholly or in part. A **superseded-by** mark states that the
 > entries it names supersede the entry carrying it, and tells a reader to read
 > them before relying on that entry.
+>
+> A legacy note is machine-readable text on an entry, marked off from the
+> entry's prose, that names the entries superseding it, in a form the workspace
+> used before it wrote supersession marks. It is not a supersession mark.
 
 ## Open choice
 
@@ -53,7 +59,7 @@ of the frontmatter block:
 
 > - Whether a binding artefact holds several entries or one, how entries are
 >   identified and ordered, how a binding artefact is laid out, and how
->   supersession marks are written.
+>   supersession marks and legacy notes are written.
 
 ## Clauses
 
@@ -61,7 +67,10 @@ Clause 3.6 is replaced, and clauses 3.8 and 3.9 follow clause 3.7:
 
 > **3.6** A binding artefact MUST be append-only: body content once recorded
 > MUST NOT be changed, and new body content MUST follow it. The frontmatter,
-> supersession marks and the artefact's layout are not body content.
+> supersession marks, legacy notes and the artefact's layout are not body
+> content. An entry's supersedes set holds the identifiers its supersedes marks
+> name, and its superseded-by set those its superseded-by marks and legacy notes
+> name. An identifier once recorded in either set MUST stay in that set.
 >
 > **3.8** Supersession marks MUST agree: entry A carries a superseded-by mark
 > naming entry B exactly when B carries a supersedes mark naming A.
@@ -81,26 +90,31 @@ in:
 - In clause 4.1.2, "such as a binding entry" becomes "such as a binding
   artefact".
 - In section 6, "and the version-control system are open here" becomes "the form
-  of entries and supersession marks, and the version-control system are open
-  here".
+  of entries, of supersession marks and of legacy notes, and the version-control
+  system are open here".
 
 ## Harness convention
 
 On acceptance, the suite's description of its harness convention gains this
-paragraph, and its opening sentence lists "the form of entries and supersession
-marks" after "the frontmatter syntax":
+paragraph, and its opening sentence lists "the form of entries, of supersession
+marks and of legacy notes" after "the frontmatter syntax":
 
-> The fixtures fix one form for entries and supersession marks. An entry is an
-> item of a numbered list at the top level of a binding artefact's body. Its
-> identifier is the number written before it, unique among the fixture's binding
-> artefacts, and entries are ordered by number. A supersedes mark is
-> `**Supersedes:**` and a superseded-by mark is `**Superseded by:**`, each
-> followed by one or more entry numbers separated by commas and ending in a full
-> stop. Any run of white space, line breaks included, may separate a mark's
-> words. Outside the frontmatter and the marks, body content is each entry's
-> identifier with its sequence of words, and the sequence of words outside any
-> entry. A word is a maximal run of characters other than Unicode white space.
-> Everything else is layout.
+> The fixtures fix one form for entries, supersession marks and legacy notes. An
+> entry is an item of a numbered list at the top level of a binding artefact's
+> body. Its identifier is the number written before it, unique among the
+> fixture's binding artefacts, and entries are ordered by number. Lists nested
+> in an entry are part of it. A supersedes mark is `**Supersedes:**` and a
+> superseded-by mark is `**Superseded by:**`, each followed by one or more entry
+> numbers separated by commas and ending in a full stop. A legacy note is
+> `SUPERSEDED by` followed by one or more entry numbers separated by commas, and
+> any full stop directly after the last number. A mark or a legacy note may
+> begin or end inside a word, and what is left of that word stays a word of its
+> own. Neither counts inside a code span or code block. Any run of white space,
+> line breaks included, may separate the words of a mark or a legacy note.
+> Outside the frontmatter, the marks and the legacy notes, body content is each
+> entry's identifier with its sequence of words, and the sequence of words
+> outside any entry. A word is a maximal run of characters other than Unicode
+> white space. Everything else is layout.
 
 ## Set aside
 
@@ -112,3 +126,8 @@ marks" after "the frontmatter syntax":
   entry in an artefact of its own could mark nothing.
 - **A clarification inside revision 1.** Marks change what clause 3.6 accepts,
   and the revision number increments when a normative clause changes.
+- **Legacy notes kept as body content.** Entries would carry two forms for good.
+- **Legacy notes read as marks.** Clauses 3.8 and 3.9 would then hold notes
+  written before marks existed to rules they were not written to meet.
+- **Only the rewrite from legacy note to mark.** Other changes of form that keep
+  the identifiers lose nothing a reader relies on either.
