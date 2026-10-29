@@ -29,10 +29,11 @@ in an older form, here called legacy notes, can then rewrite each as a mark.
 
 Adding a mark to an entry can move the line breaks of its paragraph, when the
 text is wrapped to a fixed width. Clause 3.6 therefore protects what body
-content says, not how the artefact is laid out. How entries are held,
-identified, ordered and laid out stays the workspace's choice, so the clauses
-hold the same whether one artefact records every entry or each entry is an
-artefact of its own.
+content says, not how the artefact is laid out. Where an artefact holds entries,
+text outside them, such as a heading, only frames them, so it may change. How
+entries are held, identified, ordered and laid out stays the workspace's choice,
+so the clauses hold the same whether one artefact records every entry or each
+entry is an artefact of its own.
 
 ## Definitions
 
@@ -68,9 +69,11 @@ Clause 3.6 is replaced, and clauses 3.8 and 3.9 follow clause 3.7:
 > **3.6** A binding artefact MUST be append-only: body content once recorded
 > MUST NOT be changed, and new body content MUST follow it. The frontmatter,
 > supersession marks, legacy notes and the artefact's layout are not body
-> content. An entry's supersedes set holds the identifiers its supersedes marks
-> name, and its superseded-by set those its superseded-by marks and legacy notes
-> name. An identifier once recorded in either set MUST stay in that set.
+> content. Text outside the entries of an artefact whose last recorded version
+> holds an entry is not body content either. An entry's supersedes set holds the
+> identifiers its supersedes marks name, and its superseded-by set those its
+> superseded-by marks and legacy notes name. An identifier once recorded in
+> either set MUST stay in that set.
 >
 > **3.8** Supersession marks MUST agree: entry A carries a superseded-by mark
 > naming entry B exactly when B carries a supersedes mark naming A.
@@ -112,8 +115,9 @@ marks and of legacy notes" after "the frontmatter syntax":
 > own. Neither counts inside a code span or code block. Any run of white space,
 > line breaks included, may separate the words of a mark or a legacy note.
 > Outside the frontmatter, the marks and the legacy notes, body content is each
-> entry's identifier with its sequence of words, and the sequence of words
-> outside any entry. A word is a maximal run of characters other than Unicode
+> entry's identifier with its sequence of words. Where the artefact's last
+> recorded version holds no entry, the sequence of words outside any entry is
+> body content too. A word is a maximal run of characters other than Unicode
 > white space. Everything else is layout.
 
 ## Set aside
