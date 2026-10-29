@@ -35,6 +35,15 @@ entries are held, identified, ordered and laid out stays the workspace's choice,
 so the clauses hold the same whether one artefact records every entry or each
 entry is an artefact of its own.
 
+Some changes of form reach the words, such as renaming a label on every entry,
+or turning a register of headings into a numbered list. A comparison of words
+cannot tell them from a change of meaning, and a list of what counts as form
+would only grow. A commit may therefore declare a format change.
+
+Every entry already recorded keeps its identifier and its order, and the commit
+adds no entry unless no artefact it declares held one. Review of the wording
+then sees each change of words once, with any entries it touches.
+
 ## Definitions
 
 These definitions join section 3, after the table and before clause 3.1:
@@ -64,22 +73,45 @@ of the frontmatter block:
 
 ## Clauses
 
-Clause 3.6 is replaced, and clauses 3.8 and 3.9 follow clause 3.7:
+Clause 3.6 is replaced, and clauses 3.8 to 3.10 follow clause 3.7:
 
 > **3.6** A binding artefact MUST be append-only: body content once recorded
-> MUST NOT be changed, and new body content MUST follow it. The frontmatter,
-> supersession marks, legacy notes and the artefact's layout are not body
-> content. Text outside the entries of an artefact whose last recorded version
-> holds an entry is not body content either. An entry's supersedes set holds the
-> identifiers its supersedes marks name, and its superseded-by set those its
-> superseded-by marks and legacy notes name. An identifier once recorded in
-> either set MUST stay in that set.
+> MUST NOT be changed, and new body content MUST follow it, except in a format
+> change of that artefact under clause 3.10. The frontmatter, supersession
+> marks, legacy notes and the artefact's layout are not body content. Text
+> outside the entries of an artefact whose last recorded version holds an entry
+> is not body content either. An entry's supersedes set holds the identifiers
+> its supersedes marks name, and its superseded-by set those its superseded-by
+> marks and legacy notes name. An identifier once recorded in either set MUST
+> stay in that set.
 >
 > **3.8** Supersession marks MUST agree: entry A carries a superseded-by mark
 > naming entry B exactly when B carries a supersedes mark naming A.
 >
 > **3.9** A supersedes mark MUST name only entries that come before the entry
 > carrying it in the order of entries.
+>
+> **3.10** A binding artefact's frontmatter MAY carry a `reformatted` field,
+> with any value. A commit that adds the field to an artefact already recorded,
+> or changes the field's value there, declares a format change of that artefact.
+> The field's value counts as changed when the text written for it changes,
+> leaving aside white space around it, even where a parser reads both texts as
+> the same value. Removing the field declares nothing, and neither does an
+> artefact the commit creates. A commit that declares a format change of an
+> artefact MAY change how that artefact's body content is worded, and MUST NOT
+> change what it says. Each entry an implementation reads in that artefact's
+> last recorded version MUST remain in it, with the same identifier and in the
+> same order; an entry it cannot read in the new version counts as removed.
+> Where it reads an entry in the last recorded version of any artefact the
+> commit declares, the commit MUST NOT add an entry to any artefact. An
+> implementation compares no words in an artefact the commit declares. It MUST
+> report the changes of words in the body content of the artefacts the commit
+> declares, in groups. A group holds every such change that removes the same
+> words and inserts the same words. A group touches an entry when one of its
+> changes falls within that entry in its artefact's last recorded version. The
+> report MUST name any entries each group touches. The implementation SHOULD
+> warn of a group that touches only one or two entries, and of a declared
+> artefact in whose last recorded version it reads no entry.
 
 None of revision 1's fixtures is replaced.
 
@@ -89,7 +121,7 @@ Three passages of revision 1 need new wording once the clauses above are taken
 in:
 
 - In section 3, under "The purpose of each class", "never editing what is
-  already written" becomes "never changing recorded body content".
+  already written" becomes "never changing what recorded body content says".
 - In clause 4.1.2, "such as a binding entry" becomes "such as a binding
   artefact".
 - In section 6, "and the version-control system are open here" becomes "the form
@@ -104,6 +136,8 @@ marks and of legacy notes" after "the frontmatter syntax":
 
 > The fixtures fix one form for entries, supersession marks and legacy notes. An
 > entry is an item of a numbered list at the top level of a binding artefact's
+> body. It holds everything after that item up to whichever comes first: another
+> such item, a top-level heading, a top-level thematic break, or the end of the
 > body. Its identifier is the number written before it, unique among the
 > fixture's binding artefacts, and entries are ordered by number. Lists nested
 > in an entry are part of it. A supersedes mark is `**Supersedes:**` and a
@@ -135,3 +169,13 @@ marks and of legacy notes" after "the frontmatter syntax":
   written before marks existed to rules they were not written to meet.
 - **Only the rewrite from legacy note to mark.** Other changes of form that keep
   the identifiers lose nothing a reader relies on either.
+- **A specification of the fields of an entry.** How entries are laid out stays
+  the workspace's choice.
+- **Labels read as layout.** That covers one syntax of label, and lets any
+  commit reverse a ruling by changing a label.
+- **Labels and headings named as layout.** Every other change of form would stay
+  blocked until a revision named it.
+- **Each rename declared by the release that makes it.** A change of form no
+  release declared would stay blocked.
+- **Failing a change that touches one or two entries.** A genuine change to a
+  label used once would fail too.
