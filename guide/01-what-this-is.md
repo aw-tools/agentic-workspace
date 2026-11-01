@@ -33,7 +33,7 @@ That directory holds five kinds of record:
 
 - A state file: what is live, what is next, what is blocked.
 - A decision register, which lists each decision with a number and a reason.
-  Entries are added and never changed.
+  What an entry decided, and why, never changes.
 - A findings file, which holds verified facts about the environment.
 - A notes file, for friction and observations not yet routed anywhere.
 - One directory per engagement, an engagement being one piece of work with a
@@ -49,7 +49,10 @@ The `aw` command line tool manages the workspace:
   clean.
 - `aw fast-forward` brings the members that are safe to move up to date with
   their remotes.
-- `aw doctor` checks the environment, the remotes, and the skill links.
+- `aw doctor` checks the tools, the workspace's files, the remotes and the skill
+  links. It also checks agent memory, the notes an agent keeps for itself
+  between sessions, outside the record. It warns when the workspace's
+  `.claude/settings.json` leaves it on.
 - `aw adopt` adds a checkout you already have to the manifest.
 - `aw lint` checks the record against the contract.
 

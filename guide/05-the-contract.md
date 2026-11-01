@@ -70,15 +70,37 @@ The suite also covers what a tool must not assume. Several fixtures use a
 vocabulary unlike the template's, and one maps a familiar word to a different
 class. A tool that gives a kind a meaning beyond its registry entry fails them.
 
+## Proposals
+
+A proposal is a published change to the contract that no revision yet carries.
+It binds only a workspace that opts in. The revision number stays where it is.
+The spec repository holds each proposal under `proposals/`.
+
+A workspace opts in by adding the proposal's name to the `proposals` list in its
+manifest's `[template]` block, after the revision it states there. Both
+`aw init` and `aw lint` refuse a name the installed `aw` does not know.
+
+`aw` knows one proposal, `supersession-marks`, which lets both entries of a
+supersession carry the marks [chapter 4](04-the-record.md) describes. It is a
+draft, a proposal whose wording may still change. A workspace that opts into a
+draft takes whatever wording the draft has when you upgrade `aw`. The template
+declares it, so a workspace made by `aw init` is opted in.
+
+Without the opt-in, the lint reads a mark added anywhere but the end of the
+decision register as a rewrite, and fails it. A workspace made from an earlier
+template opts in by applying the template's changelog entry that declares the
+proposal. [Chapter 6](06-working-with-agents.md) says where the procedure for
+applying a changelog entry lives.
+
 ## Where the implementation stands
 
-`aw lint` is the implementation this guide describes. It enforces the contract's
-clauses at commit time. It also enforces rules of its own that the contract
-leaves open. One is a layout rule: shared files sit at the top of `context/`,
-and each engagement's files sit in its own directory. The others are the state
-file's caps, the staleness warning and remits. These rules are this
-implementation's tuning, and a workspace that sets them differently still
-conforms.
+`aw lint` is the implementation this guide describes. At commit time it enforces
+the contract's clauses and those of each proposal the workspace opts into. It
+also enforces rules of its own that the contract leaves open. One is a layout
+rule: shared files sit at the top of `context/`, and each engagement's files sit
+in its own directory. The others are the state file's caps, the staleness
+warning and remits. These rules are this implementation's tuning, and a
+workspace that sets them differently still conforms.
 
 The caps, the staleness warning and remits run only when the registry has a
 `[state]` table. The template's registry has one. Remove the table to turn the
