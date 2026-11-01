@@ -134,8 +134,8 @@ only there. Add one if you want the record on more than one machine, or want a
 copy that survives the machine.
 
 Choose the host for the record, not for the code. The record holds more than the
-code shows, such as client names, people and rejected decisions. Pick a host you
-would trust with the whole record:
+code shows, such as client names, people and alternatives set aside. Pick a host
+you would trust with the whole record:
 
 - A workspace for personal or public work suits a hosted private repository.
 - A workspace that names clients, machines or people belongs on infrastructure
@@ -150,8 +150,30 @@ history already pushed stays on the old host.
 aw doctor
 ```
 
-`aw doctor` checks git and garden, whether each member's remote is reachable and
-whether the skill links are healthy. Each finding comes with a remedy.
+`aw doctor` runs these checks in order and prints a remedy under each one that
+fails or warns:
+
+- git is installed, and garden is at version 2.6 or later;
+- `garden.yaml` and the trees file `aw` generates are present;
+- the pre-commit hook is turned on and in place, when the workspace has a
+  `.githooks/` directory;
+- agent memory is off;
+- each member's remote is reachable and holds the member's branch;
+- the directory at the workspace root where each agent finds its skills is
+  present;
+- every skill directory and skill the manifest names exists;
+- no skill link is broken.
+
+The agent memory check warns and never fails. `aw doctor` reads the workspace's
+own `.claude/settings.json` and warns unless that file is absent or sets
+`autoMemoryEnabled` to `false`. `aw status` reports the same finding. The
+template's copy sets the key, so a fresh workspace prints no warning.
+
+Keep agent memory off. A memory lives on one machine and in one tool, outside
+the record. Yet the agent loads it into every session as if it were a rule.
+
+For each member, `aw doctor` also says whether that member states its own rules
+for how work lands. That line is information, never a failure.
 
 ## The first session
 

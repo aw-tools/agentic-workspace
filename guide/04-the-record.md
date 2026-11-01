@@ -13,8 +13,9 @@ The class decides the file's lifetime. There are four:
 
 - Standing: answers what is true now. It is rewritten in place and never
   appended to. Its states are `live` and `retired`.
-- Binding: answers what was decided and why. Content once written is never
-  changed; new content follows it. Its states are `active` and `superseded`.
+- Binding: answers what was decided and why. What an entry decided, and why,
+  never changes. New content follows it. Its states are `active` and
+  `superseded`.
 - Episodic: governs one stretch of work and loses its authority when that work
   ends. Its states are `open`, `closed` and `compacted`.
 - Ephemeral: serves a single exchange between sessions and is worth nothing
@@ -57,10 +58,35 @@ and observations that have no home yet.
 ## The decision register
 
 `DECISIONS.md` is the one binding file. Each entry has a number, the ruling, the
-reason that carried it, and one line per alternative rejected. Entries are added
-at the end and never edited or renumbered, so a citation such as "decision 40"
-means the same thing forever. When a later entry overrides an earlier one, the
-earlier one gains an inline `SUPERSEDED by N` marker naming its successor.
+reason that carried it, and one line per alternative set aside. An alternative
+set aside stays open, so a later entry may take it up. Entries are added at the
+end and never renumbered, so a citation such as "decision 40" means the same
+thing forever.
+
+A ruling still being argued is a draft, kept in the ledger of the engagement
+that raised it, or in `NOTES.md`. It enters the decision register once its
+question settles and you confirm it. A ruling entered while still argued needs
+more entries to correct it, because the register only grows.
+
+Before entering a ruling, the agent shows you the entry as it would stand. It
+also says in one line why the ruling passes the four tests that make it worth an
+entry. `artefacts.md` states the tests and the entry form.
+
+## Supersession marks
+
+A change to an earlier entry, wholly or in part, is a new entry, never an edit.
+A supersession mark is a label on an entry that names the entries it relates to,
+and nothing else. The marks link the two entries.
+
+If entry 41 changes entry 40, entry 41 carries `**Supersedes:** 40.`. Entry 40
+gains `**Superseded by:** 41.`. A reader who reaches 40 first then knows to read
+41 before relying on it. Anyone may add a mark to any entry, old or new, because
+it records how entries relate and not what they decided.
+
+Only a workspace that has opted in uses marks. There the lint checks that marks
+agree, not that every supersession is marked, so an unmarked contradiction
+passes. Whoever enters a superseding entry therefore marks both entries in the
+same commit. [Chapter 5](05-the-contract.md) says how a workspace opts in.
 
 ## Engagements
 
