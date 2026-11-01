@@ -71,20 +71,26 @@ the grants before use, in particular filesystem writes and credential access.
 ## Lore
 
 [Lore](https://github.com/attila/lore) is a local search engine for your own
-engineering patterns. The patterns are Markdown files in a git repository. Lore
-indexes them with full-text and vector search. It serves them to the agent over
-the Model Context Protocol, so the agent consults your conventions before it
-writes code.
+engineering patterns, the conventions you want an agent to follow. The patterns
+are Markdown files in a git repository. Lore indexes them so a search finds a
+pattern by its words or by its meaning.
 
-It comes in three parts:
+Lore serves its search to the agent over the Model Context Protocol, an open
+protocol through which an agent calls outside tools. So the agent consults your
+conventions before it writes code.
 
-- `lore`, the engine, a single Rust binary with one runtime dependency, Ollama,
-  for embeddings. Releases carry prebuilt binaries with checksums.
+Lore comes in three parts:
+
+- `lore`, the engine, a single Rust binary. It needs an embedding server, a
+  program that turns text into numbers so that lore can find patterns by
+  meaning. Lore uses Ollama by default. Any server that answers in the format of
+  OpenAI's embeddings API also works, such as a hosted service, LM Studio or
+  `llama-server` from llama.cpp.
 - [`lore-patterns`](https://github.com/attila/lore-patterns), one author's
   corpus, a worked example of pattern files rather than conventions to adopt.
   Write your own.
-- The Claude Code plugin, inside the engine repository, which adds the search
-  server plus hooks that inject a relevant pattern before an edit.
+- The Claude Code plugin, inside the engine repository. It connects lore's
+  search to Claude Code. Its hooks inject a relevant pattern before an edit.
 
 Lore is independent of the workspace. It reads a pattern repository and needs
 nothing from the record.

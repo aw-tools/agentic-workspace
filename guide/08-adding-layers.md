@@ -106,16 +106,23 @@ the module into your home directory with GNU Stow.
 
 ## Lore
 
-Lore serves your own pattern files to your agent. It needs Ollama running, and a
-git repository of pattern files to index.
+Lore serves your own pattern files to your agent. It needs an embedding server
+running, and a git repository of pattern files to index. If your agent runs in a
+sandbox, lore runs inside that sandbox, so the agent's profile must let lore
+reach the embedding server.
 
-1. Install and start Ollama, with Homebrew or your package manager:
+1. Start an embedding server. To use Ollama, install and start it with Homebrew
+   or your package manager:
 
    ```sh
    brew install ollama
    brew services start ollama
    ```
 
+   To use another embedding server, have it running with the settings that
+   lore's
+   [embedding servers page](https://github.com/attila/lore/blob/main/docs/embedding-servers.md)
+   gives.
 2. Install `lore` with Homebrew:
 
    ```sh
@@ -125,7 +132,9 @@ git repository of pattern files to index.
    Without Homebrew, install it from a release, following the install section of
    the [lore README](https://github.com/attila/lore#install).
 3. Point lore at your patterns. Without any yet, create a git repository with
-   one pattern file, following the pattern authoring guide chapter 7 links.
+   one pattern file, following the pattern authoring guide that chapter 7 links.
+   Then run this command, adding the flags from the embedding servers page if
+   you use another embedding server:
 
    ```sh
    lore init --repo ~/my-patterns
@@ -145,7 +154,7 @@ git repository of pattern files to index.
    claude --plugin-dir lore/integrations/claude-code/
    ```
 
-`lore init` pulls the embedding model first. `lore status` then counts the
-pattern files indexed, as sources. The
+With Ollama, `lore init` downloads a model first. `lore status` shows the number
+of pattern files indexed on its `Sources:` line. The
 [lore documentation](https://github.com/attila/lore#documentation) covers
 configuration, the plugin's hooks and how search ranks patterns.

@@ -45,3 +45,4 @@ The last column links to the chapter that introduces the term and explains it.
 | agent definition     | A Claude Code file that names an agent and sets its tools and hooks.                                                   | [7](07-going-further.md)            |
 | profile              | A file that lists what a sandboxed agent may read, write and reach.                                                    | [7](07-going-further.md)            |
 | pattern              | One markdown file in a lore corpus, holding a convention or practice for an agent to apply.                            | [7](07-going-further.md)            |
+| embedding server     | A program that turns text into numbers so that lore can find patterns by meaning.                                      | [7](07-going-further.md)            |
