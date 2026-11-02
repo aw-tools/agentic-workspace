@@ -42,7 +42,7 @@ a remote, the agent pushes every commit at once.
 
 A fresh workspace has no remote, so the agent commits only until you add one.
 [Chapter 3](03-getting-started.md) says how to choose a remote, and the choice
-is yours, never the agent's.
+is yours.
 
 This authority covers the layer alone. It never covers a member or a secret. The
 list of things that must not enter the record is in `context/README.md`, and it

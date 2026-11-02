@@ -2,11 +2,11 @@
 # place a ceiling lives. Raise a line in a commit that says why.
 01-what-this-is.md 600
 02-the-shape-of-a-workspace.md 600
-03-getting-started.md 1108
-04-the-record.md 1100
-05-the-contract.md 866
+03-getting-started.md 1104
+04-the-record.md 1085
+05-the-contract.md 852
 06-working-with-agents.md 700
 07-going-further.md 785
 08-adding-layers.md 735
 09-design-notes.md 800
-glossary.md 948
+glossary.md 945
