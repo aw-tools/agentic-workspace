@@ -59,8 +59,8 @@ links a directory's files into another directory, then links them into place.
 
 The [`portable-dotfiles`](https://github.com/attila/portable-dotfiles)
 repository holds one author's dotfiles for macOS, Linux and remote coding
-environments. They are a worked example, not a setup to adopt. Keep your own and
-borrow what fits. The part that matters for a workspace is the `nono` module.
+environments. They are a worked example. Keep your own and borrow what fits. The
+part that matters for a workspace is the `nono` module.
 
 A profile is a file that lists what a sandboxed agent may read, write and reach.
 The module holds profiles for Claude Code, Codex, and Crush, each extending a
@@ -87,8 +87,7 @@ Lore comes in three parts:
   OpenAI's embeddings API also works, such as a hosted service, LM Studio or
   `llama-server` from llama.cpp.
 - [`lore-patterns`](https://github.com/attila/lore-patterns), one author's
-  corpus, a worked example of pattern files rather than conventions to adopt.
-  Write your own.
+  corpus, a worked example of pattern files. Write your own.
 - The Claude Code plugin, inside the engine repository. It connects lore's
   search to Claude Code. Its hooks inject a relevant pattern before an edit.
 

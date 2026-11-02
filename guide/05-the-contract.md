@@ -46,12 +46,11 @@ Each is a real choice, and the contract does not make it.
 ## Revisions
 
 The contract carries an integer revision. The number moves when a clause
-changes, and not for an editorial change or a release of any tool. A workspace
+changes. An editorial change or a tool release does not move it. A workspace
 states the revision it conforms to.
 
-An implementation must refuse a revision it does not recognise, rather than
-apply the rules of a different one. The publication date records when the text
-was issued; the revision alone decides conformance.
+An implementation must refuse a revision it does not recognise. The publication
+date records when the text was issued; the revision alone decides conformance.
 
 ## How conformance is proved
 
@@ -64,7 +63,7 @@ fixture.
 A tool conforms when it gives the expected verdict on every fixture of the
 revision. The suite fixes one form for the things the contract leaves open, such
 as the registry format, so that any implementation can read the fixtures. That
-choice governs the fixtures alone and places no requirement on a workspace.
+choice places no requirement on a workspace.
 
 The suite also covers what a tool must not assume. Several fixtures use a
 vocabulary unlike the template's, and one maps a familiar word to a different
@@ -77,7 +76,7 @@ It binds only a workspace that opts in. The revision number stays where it is.
 The spec repository holds each proposal under `proposals/`.
 
 A workspace opts in by adding the proposal's name to the `proposals` list in its
-manifest's `[template]` block, after the revision it states there. Both
+manifest's `[template]` block, beside the revision it states there. Both
 `aw init` and `aw lint` refuse a name the installed `aw` does not know.
 
 `aw` knows one proposal, `supersession-marks`, which lets both entries of a
@@ -88,9 +87,9 @@ declares it, so a workspace made by `aw init` is opted in.
 
 Without the opt-in, the lint reads a mark added anywhere but the end of the
 decision register as a rewrite, and fails it. A workspace made from an earlier
-template opts in by applying the template's changelog entry that declares the
+release of the template opts in by taking the template change that declares the
 proposal. [Chapter 6](06-working-with-agents.md) says where the procedure for
-applying a changelog entry lives.
+taking template changes lives.
 
 ## Where the implementation stands
 
