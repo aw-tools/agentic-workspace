@@ -135,10 +135,18 @@ paragraph, and its opening sentence lists "the form of entries, of supersession
 marks and of legacy notes" after "the frontmatter syntax":
 
 > The fixtures fix one form for entries, supersession marks and legacy notes. An
-> entry is an item of a numbered list at the top level of a binding artefact's
-> body. It holds everything after that item up to whichever comes first: another
-> such item, a top-level heading, a top-level thematic break, or the end of the
-> body. Its identifier is the number written before it, unique among the
+> entry is either an item of a numbered list at the top level of a binding
+> artefact's body, or a level-two heading at the top level of that body, written
+> as `##` with no closing sequence of `#`, whose text opens with a number, a
+> full stop and white space. Where a version of an artefact holds a heading
+> entry, no numbered list item in that version is an entry. A list entry holds
+> everything after its item up to whichever comes first: another such item, a
+> top-level heading, a top-level thematic break, or the end of the body. A
+> heading entry holds its heading's words after that number and full stop, and
+> everything after the heading up to whichever comes first: another heading
+> entry, a top-level heading of level one or two, a top-level thematic break, or
+> the end of the body; numbered lists and deeper headings inside it are part of
+> it. An entry's identifier is the number written before it, unique among the
 > fixture's binding artefacts, and entries are ordered by number. Lists nested
 > in an entry are part of it. A supersedes mark is `**Supersedes:**` and a
 > superseded-by mark is `**Superseded by:**`, each followed by one or more entry
