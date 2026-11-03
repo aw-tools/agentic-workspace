@@ -23,17 +23,18 @@ mark names, so an entry once named stays named. A workspace that noted
 supersessions in an older form, here called legacy notes, can rewrite each as a
 mark.
 
-Adding a mark can move the line breaks of a wrapped paragraph. Clause 3.6
-therefore protects what body content says, not how it is laid out. Where an
-artefact holds entries, text outside them only frames them, so it may change.
-How entries are held, identified, ordered and laid out is the workspace's
-choice, so the clauses hold the same for one artefact or one per entry.
+Clause 3.6 protects what body content says, not its form, so adding a mark never
+counts as a change. Text outside entries only frames them and may change, and
+how entries are held and laid out stays the workspace's choice.
 
 Some changes of form reach the words, such as renaming a label on every entry or
 turning headings into a numbered list. A comparison of words cannot tell them
-from a change of meaning, and a list of what counts as form would only grow. A
-commit may therefore declare a format change. The change keeps every entry, its
-identifier and its order, adds none, and review sees each change of words once.
+from a change of meaning, so a commit may declare a format change in the
+artefact's frontmatter.
+
+A format change keeps every entry, with the same identifier and in the same
+order. It adds no entry. The implementation reports the changed words in groups,
+so a reviewer sees a label renamed on every entry as one change.
 
 ## Definitions
 
@@ -54,14 +55,15 @@ These definitions join section 3, after the table and before clause 3.1:
 > entry's prose, that names the entries superseding it, in a form the workspace
 > used before it wrote supersession marks. It is not a supersession mark.
 
-## Open choice
+## Open choices
 
-This item joins the choices section 6 leaves open, after the one on the syntax
+These items join the choices section 6 leaves open, after the one on the syntax
 of the frontmatter block:
 
-> - Whether a binding artefact holds several entries or one, how entries are
->   identified and ordered, how a binding artefact is laid out, and how
->   supersession marks and legacy notes are written.
+> - Whether a binding artefact holds several entries or is a single entry.
+> - How entries are identified and ordered.
+> - How a binding artefact is laid out.
+> - How supersession marks and legacy notes are written.
 
 ## Clauses
 
@@ -77,9 +79,9 @@ Clause 3.6 is replaced, and clauses 3.8 to 3.18 follow clause 3.7:
 > **3.9** Where an artefact's last recorded version holds an entry, an
 > implementation MUST NOT count text outside its entries as body content.
 >
-> **3.10** An entry's supersedes set holds the identifiers its supersedes marks
-> name, and its superseded-by set those its superseded-by marks and legacy notes
-> name. An identifier once recorded in either set MUST stay in that set.
+> **3.10** Once a recorded supersedes mark on entry A names entry B, A MUST keep
+> a supersedes mark naming B. Once a recorded superseded-by mark or legacy note
+> on A names B, A MUST keep a superseded-by mark or legacy note naming B.
 >
 > **3.11** Supersession marks MUST agree: entry A carries a superseded-by mark
 > naming entry B exactly when B carries a supersedes mark naming A.
@@ -100,21 +102,20 @@ Clause 3.6 is replaced, and clauses 3.8 to 3.18 follow clause 3.7:
 > implementation MUST NOT reject the commit under clause 3.6 for a change of
 > words in that artefact.
 >
-> **3.15** Each entry an implementation reads in the last recorded version of an
-> artefact whose format change a commit declares MUST remain in it, with the
-> same identifier and in the same order. An entry it cannot read in the new
-> version counts as removed.
+> **3.15** A commit that declares a format change of an artefact MUST keep every
+> entry an implementation reads in the artefact's last recorded version, with
+> the same identifier and in the same order. An entry the implementation cannot
+> read in the new version counts as removed.
 >
-> **3.16** Where an implementation reads an entry in the last recorded version
-> of any artefact whose format change a commit declares, the commit MUST NOT add
-> an entry to any artefact.
+> **3.16** A commit that declares a format change of an artefact whose last
+> recorded version holds an entry MUST NOT add an entry to any artefact.
 >
-> **3.17** An implementation MUST report the changes of words in the body
-> content of the artefacts whose format change a commit declares, in groups, and
-> name the entries each group touches. A group holds every such change that
-> removes the same words and inserts the same words. A group touches an entry
-> when one of its changes falls within that entry in its artefact's last
-> recorded version.
+> **3.17** When a commit declares a format change of an artefact, an
+> implementation MUST report the commit's changes of words in that artefact's
+> body content, in groups. Changes that replace the same old words with the same
+> new words form one group. The report MUST name each entry a group touches. A
+> group touches an entry when one of its changes falls within that entry in the
+> artefact's last recorded version.
 >
 > **3.18** An implementation SHOULD warn of a group that touches only one or two
 > entries, and of an artefact whose format change a commit declares and in whose
