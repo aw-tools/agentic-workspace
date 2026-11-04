@@ -42,3 +42,10 @@ only under numbers no other draft uses.
 Once a revision takes a proposal in, a later proposal on the same clause amends
 that revision. A workspace may name several proposals, and each one's fixtures
 then pass with every named proposal in force.
+
+## What the reference implementation does
+
+The reference implementation supports every revision, each frozen at its number,
+and each proposal in its current version only. Another implementation may
+support fewer. The reference implementation applies each proposal a workspace
+names. It refuses a name it does not know.

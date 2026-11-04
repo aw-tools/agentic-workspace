@@ -25,6 +25,10 @@ A fixture whose clause concerns commits holds no files at the top level beyond
 A runner creates an empty repository, copies each step in order, commits it, and
 hands the result to the implementation. `registry.toml` sits inside each step.
 
+The implementation judges each commit after the first against the one before it.
+The verdict is `fail` when any of those commits fails. A warning does not fail a
+commit.
+
 The verdict is the outcome alone. Which clause an implementation cites, and in
 what words, is its own business.
 

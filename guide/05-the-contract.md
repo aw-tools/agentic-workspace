@@ -46,12 +46,11 @@ Each is a real choice, and the contract does not make it.
 ## Revisions
 
 The contract carries an integer revision. The number moves when a clause
-changes, and not for an editorial change or a release of any tool. A workspace
+changes. An editorial change or a tool release does not move it. A workspace
 states the revision it conforms to.
 
-An implementation must refuse a revision it does not recognise, rather than
-apply the rules of a different one. The publication date records when the text
-was issued; the revision alone decides conformance.
+An implementation must refuse a revision it does not recognise. The publication
+date records when the text was issued; the revision alone decides conformance.
 
 ## How conformance is proved
 
@@ -64,21 +63,43 @@ fixture.
 A tool conforms when it gives the expected verdict on every fixture of the
 revision. The suite fixes one form for the things the contract leaves open, such
 as the registry format, so that any implementation can read the fixtures. That
-choice governs the fixtures alone and places no requirement on a workspace.
+choice places no requirement on a workspace.
 
 The suite also covers what a tool must not assume. Several fixtures use a
 vocabulary unlike the template's, and one maps a familiar word to a different
 class. A tool that gives a kind a meaning beyond its registry entry fails them.
 
+## Proposals
+
+A proposal is a published change to the contract that no revision yet carries.
+It binds only a workspace that opts in. The revision number stays where it is.
+The spec repository holds each proposal under `proposals/`.
+
+A workspace opts in by adding the proposal's name to the `proposals` list in its
+manifest's `[template]` block, beside the revision it states there. Both
+`aw init` and `aw lint` refuse a name the installed `aw` does not know.
+
+`aw` knows one proposal, `supersession-marks`, which lets both entries of a
+supersession carry the marks [chapter 4](04-the-record.md) describes. It is a
+draft, a proposal whose wording may still change. A workspace that opts into a
+draft takes whatever wording the draft has when you upgrade `aw`. The template
+declares it, so a workspace made by `aw init` is opted in.
+
+Without the opt-in, the lint reads a mark added anywhere but the end of the
+decision register as a rewrite, and fails it. A workspace made from an earlier
+release of the template opts in by taking the template change that declares the
+proposal. [Chapter 6](06-working-with-agents.md) says where the procedure for
+taking template changes lives.
+
 ## Where the implementation stands
 
-`aw lint` is the implementation this guide describes. It enforces the contract's
-clauses at commit time. It also enforces rules of its own that the contract
-leaves open. One is a layout rule: shared files sit at the top of `context/`,
-and each engagement's files sit in its own directory. The others are the state
-file's caps, the staleness warning and remits. These rules are this
-implementation's tuning, and a workspace that sets them differently still
-conforms.
+`aw lint` is the implementation this guide describes. At commit time it enforces
+the contract's clauses and those of each proposal the workspace opts into. It
+also enforces rules of its own that the contract leaves open. One is a layout
+rule: shared files sit at the top of `context/`, and each engagement's files sit
+in its own directory. The others are the state file's caps, the staleness
+warning and remits. These rules are this implementation's tuning, and a
+workspace that sets them differently still conforms.
 
 The caps, the staleness warning and remits run only when the registry has a
 `[state]` table. The template's registry has one. Remove the table to turn the

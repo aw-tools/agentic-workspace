@@ -14,10 +14,9 @@ What the session knew dies with it. It knew the task and the reason for it. It
 knew which decisions were taken, which attempts were rejected, and what to do
 next. None of that survives the end of the session on its own.
 
-The code repository is the wrong place for the record, because it holds the code
-and not the thread of working on it. Commit messages and pull requests capture
-fragments. Work often spans several repositories at once, so no single
-repository can hold the whole record.
+The code repository is the wrong place for the record, because it holds only the
+code. Commit messages and pull requests capture fragments. Work often spans
+several repositories at once, so no single repository can hold the whole record.
 
 So the next session starts cold. Whether a human or an agent runs it, it
 rebuilds the record from memory, chat scrollback and guesswork.
@@ -32,8 +31,8 @@ files, among them a directory named `context/`.
 That directory holds five kinds of record:
 
 - A state file: what is live, what is next, what is blocked.
-- A decision register, which lists each decision with a number and a reason.
-  Entries are added and never changed.
+- A decision register, which lists each decision with a number and a reason. An
+  entry's decision and its reason never change.
 - A findings file, which holds verified facts about the environment.
 - A notes file, for friction and observations not yet routed anywhere.
 - One directory per engagement, an engagement being one piece of work with a
@@ -49,7 +48,10 @@ The `aw` command line tool manages the workspace:
   clean.
 - `aw fast-forward` brings the members that are safe to move up to date with
   their remotes.
-- `aw doctor` checks the environment, the remotes, and the skill links.
+- `aw doctor` checks the tools, the workspace's files, the remotes and the skill
+  links. It also checks agent memory, the notes an agent keeps for itself
+  between sessions, outside the record. It warns when the workspace's Claude
+  Code settings leave that memory on.
 - `aw adopt` adds a checkout you already have to the manifest.
 - `aw lint` checks the record against the contract.
 
