@@ -41,7 +41,7 @@ in.
   item has four fields: now, next, blocked, and where its ledger is. A session
   reads this file whole, so it stays short.
 - `DECISIONS.md`, the decision register. Numbered entries, each with its reason.
-  An entry is added at the end and never edited.
+  An entry is added at the end. An entry's decision and its reason never change.
 - `FINDINGS.md`, the findings file. Facts about the environment that a session
   checked, such as which tool version is installed on which machine.
 - `NOTES.md`, for friction and observations not yet routed anywhere.

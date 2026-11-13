@@ -20,10 +20,9 @@ because the workspace holds only the record of the work.
 ## Why the state file is rewritten
 
 A file that is only appended to grows into a log, and a log answers what
-happened rather than what is true now. A session resuming from a log must read
-the whole log and reconstruct the present. A session rewrites the state file
-instead: each update replaces an item's fields with the present state. A reader
-then takes the file as current.
+happened. A session resuming from a log must read the whole log and reconstruct
+the present. A session rewrites the state file instead: each update replaces an
+item's fields with the present state. A reader then takes the file as current.
 
 The caps exist for the same reason. Every session reads the file whole at its
 start, so its size is a cost paid every time. You raise a cap that is too tight
@@ -49,8 +48,7 @@ recorded is a loss. Recovery is one git command away.
 A file could carry its class as a third field beside kind and status. It does
 not, because a hand-typed copy of a computed field drifts from the field it came
 from. Nothing then says which of the two is right. Deriving the class from the
-kind through the registry makes a lifetime change one registry row instead of an
-edit to every file.
+kind through the registry makes a lifetime change one registry row.
 
 The same reasoning keeps the kind names out of the contract. The names are a
 workspace's own vocabulary. Fixing a set in the contract would reserve ordinary
@@ -60,9 +58,8 @@ all.
 ## Why the contract names no tool
 
 A record that only one binary can read is tied to that binary for life. The
-contract defines the model and not the tool, so that a second implementation can
-pass the same fixtures and read the same record. The suite makes that claim
-testable rather than asserted.
+contract names no tool, so that a second implementation can pass the same
+fixtures and read the same record. The suite makes that claim testable.
 
 The contract and `aw` also live in separate repositories, with separate revision
 lines. You report a defect in the definition against the spec repository, and a
@@ -71,10 +68,9 @@ release of the binary moves no clause.
 ## Why the model is old
 
 Records management has held for decades that classification determines
-disposition. A record's class decides how long it is kept and how it is
-destroyed, and its content does not. Content modelling in document systems
-supplies the same triple of type, policy, and state. The contract applies both
-to a git repository.
+disposition. A record's class alone decides how long it is kept and how it is
+destroyed. Content modelling in document systems supplies the same triple of
+type, policy, and state. The contract applies both to a git repository.
 
 The taxonomy of kinds and classes drives agent behaviour, so an agent matches on
 kind and inherits a lifetime. Signed, linear version control is the disposition
