@@ -172,6 +172,10 @@ template's copy sets the key, so a fresh workspace prints no warning.
 Keep agent memory off. A memory lives on one machine and in one tool, outside
 the record. Yet the agent loads it into every session as if it were a rule.
 
+The check reads the setting only, so it never sees memories an agent already
+stored. On each machine, ask the agent to sort its memories of the workspace and
+its members. It moves what still matters into the record and deletes the rest.
+
 For each member, `aw doctor` also says whether that member states its own rules
 for how work lands. That line is information only.
 
